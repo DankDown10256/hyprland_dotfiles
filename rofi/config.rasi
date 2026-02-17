@@ -1,0 +1,154 @@
+/******************************************************************************
+ * OutTheme
+ * A Minimal Rofi Theme by Outer Frog
+ * Built for KDE Plasma 6 with Wayland (and probably works with other configurations)
+ * Requires Open Sans (Ubuntu/Debian: sudo apt install fonts-open-sans)
+ ******************************************************************************/
+
+configuration {
+    run,drun {
+        fallback-icon: "application-x-addon";
+    }
+    show-icons: true;
+}
+
+* {
+    /* Colors - Nord */
+    darkbg: rgba(0,0,0,0.5); // Nord0
+    lightbg: rgba(255,255,255,0.5); // Nord2
+    tcolor: rgba(255,255,255,1); // Nord4
+
+    /* Font */
+    font: "Open-Sans Regular 14";
+}
+
+window {
+    width: 30%;
+
+    /* Ideally anchor should be north, 
+    but it doesn't work on Wayland as of rofi 2.0.0 */
+    location: center;
+    anchor: center;
+
+    /* General theming */
+    border-radius: 10px;
+    background-color: @darkbg;
+    text-color: @tcolor;
+    transparency: "screenshot";
+
+    /* Border */
+    border: 1px;
+    border-color: @lightbg;
+}
+
+
+entry {
+    placeholder: "";
+    text-color: @tcolor;
+    font: "Open-Sans Bold 20";
+    blink: true;
+    padding: 12 15px;
+}
+
+textbox-prompt-colon {
+    enabled: false;
+}
+
+prompt {
+    enabled: false;
+}
+
+message{
+    /* For errors */
+    content: "";
+    border: 0px;
+    text-color: red;
+    font: "Open-Sans Thin 12";
+}
+textbox {
+    text-color: inherit;
+    font:inherit;
+}
+
+listview {
+    spacing:    5px;
+    lines:      5;
+    fixed-height: false;
+    border: 0px;
+
+    /* Change these if you dislike the dynamic vertical scaling of the window */
+    dynamic:    true; 
+    require-input: true;
+}
+
+element {
+    border-radius: 5px;
+    children: [element-icon, element-text];
+}
+
+element.normal.normal {
+    background-color: transparent;
+    text-color:       @tcolor;
+}
+element.normal.urgent {
+    background-color: transparent;
+    text-color:       @tcolor;
+}
+element.normal.active {
+    background-color: transparent;
+    text-color:       @tcolor;
+}
+element.selected.normal {
+    background-color: @lightbg;
+    text-color:       @tcolor;
+}
+element.selected.urgent {
+    background-color: @lightbg;
+    text-color:       @tcolor;
+}
+element.selected.active {
+    background-color: @lightbg;
+    text-color:       @tcolor;
+}
+element.alternate.normal {
+    background-color: transparent;
+    text-color:       @tcolor;
+}
+element.alternate.urgent {
+    background-color: transparent;
+    text-color:       @tcolor;
+}
+element.alternate.active {
+    background-color: transparent;
+    text-color:       @tcolor;
+}
+
+element-text {
+    text-color: inherit;
+    highlight: None;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    enabled: true;
+    size: 40px;
+    padding: 10px 15px;
+}
+
+scrollbar {
+    handle-color: @lightbg;
+}
+
+inputbar {
+    children:   [ entry,case-indicator, icon-search ];
+}
+
+/* Search icon on the right */
+icon-search {
+    expand: false;
+    filename: "searchicon_b3.svg";
+    size: 30px;
+    padding: 12.5px 17.5px;
+    vertical-align: 0.5;
+}
+
