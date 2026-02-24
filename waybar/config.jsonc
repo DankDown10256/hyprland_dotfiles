@@ -5,7 +5,7 @@
     "spacing": 4,
     "modules-left": ["hyprland/workspaces", "hyprland/submap"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/notification", "cpu", "memory", "pulseaudio", "network", "tray"],
+    "modules-right": ["custom/notification", "memory", "pulseaudio", "network", "tray"],
     
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -38,42 +38,38 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%Y-%m-%d %H:%M}"
     },
-    
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": false
-    },
-    
     "memory": {
-        "format": " {}%"
+        "format": " {}%",
+        "on-click": "kitty btop"
     },
     
     "network": {
-        "format-wifi": " {signalStrength}%",
-        "format-ethernet": " connected",
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": "󰈀 connected",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "quickshell -p ~/.config/quickshell/wifimenu.qml"
     },
     
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}% ",
+        "format": " {volume}%",
+        "format-bluetooth": " {volume}% ",
         "format-bluetooth-muted": " {icon}",
         "format-muted": " {format_source}",
-        "format-source": " {volume}%",
+        "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
-            "headphone": "",
+            "headphone": "󰋋",
             "hands-free": "",
-            "headset": "",
-            "phone": "",
+            "headset": "󰋎",
+            "phone": "",
             "portable": "",
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        "on-click": ""
     },
     
     "tray": {
