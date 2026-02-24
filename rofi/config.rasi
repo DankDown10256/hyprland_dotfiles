@@ -1,154 +1,278 @@
-/******************************************************************************
- * OutTheme
- * A Minimal Rofi Theme by Outer Frog
- * Built for KDE Plasma 6 with Wayland (and probably works with other configurations)
- * Requires Open Sans (Ubuntu/Debian: sudo apt install fonts-open-sans)
- ******************************************************************************/
-
+/* ---- Configuration ---- */
 configuration {
-    run,drun {
-        fallback-icon: "application-x-addon";
-    }
-    show-icons: true;
+    modi:                    "drun,run,window,ssh";
+    show-icons:              true;
+    display-drun:            "⌕";
+    display-run:             "Run";
+    display-window:          "Windows";
+    display-ssh:             "SSH";
+    drun-display-format:     "{name}";
+    hover-select:            true;
+    me-select-entry:         "MouseSecondary";
+    me-accept-entry:         "MousePrimary";
+    window-format:           "{w} · {c} · {t}";
+    font:                    "MesloLGSDZ Nerd Font 10";
+    terminal:                "ghostty";
+    ssh-command:             "{terminal} -e {ssh-client} {host} [-p {port}]";
 }
 
+@theme "~/.config/rofi/theme/colors-rofi.rasi"
+
+/* ---- Global Properties ---- */
 * {
-    /* Colors - Nord */
-    darkbg: rgba(0,0,0,0.5); // Nord0
-    lightbg: rgba(255,255,255,0.5); // Nord2
-    tcolor: rgba(255,255,255,1); // Nord4
+    bg0:                     @background;
+    bg1:                     @color8;
+    bg2:                     #161b22;  /* Slightly lighter than bg1 for hover */
 
-    /* Font */
-    font: "Open-Sans Regular 14";
+    fg0:                     @foreground;
+    fg1:                     @color7;
+
+    accent:                  @color4;
+    accent-alt:              @color12;
+    urgent:                  @color9;
+    active:                  @color10;
+
+    background-color:        transparent;
+    text-color:              @fg0;
+
+    border-color:            @accent;
+    separatorcolor:          rgba(88, 166, 255, 0.15);
 }
 
+/* ---- Window ---- */
 window {
-    width: 30%;
-
-    /* Ideally anchor should be north, 
-    but it doesn't work on Wayland as of rofi 2.0.0 */
-    location: center;
-    anchor: center;
-
-    /* General theming */
-    border-radius: 10px;
-    background-color: @darkbg;
-    text-color: @tcolor;
-    transparency: "screenshot";
-
-    /* Border */
-    border: 1px;
-    border-color: @lightbg;
+    transparency:            "real";
+    location:                center;
+    anchor:                  center;
+    fullscreen:              false;
+    width:                   750px;
+    border-radius:           16px;
+    cursor:                  "default";
+    background-color:        rgba(13, 17, 23, 0.95);
+    border:                  2px;
+    border-color:            @accent;
 }
 
-
-entry {
-    placeholder: "";
-    text-color: @tcolor;
-    font: "Open-Sans Bold 20";
-    blink: true;
-    padding: 12 15px;
+/* ---- Main Box ---- */
+mainbox {
+    enabled:                 true;
+    spacing:                 0px;
+    margin:                  0px;
+    padding:                 20px;
+    background-color:        transparent;
+    children:                [ "inputbar", "mode-switcher", "listview" ];
 }
 
-textbox-prompt-colon {
-    enabled: false;
+/* ---- Inputbar ---- */
+inputbar {
+    enabled:                 true;
+    spacing:                 12px;
+    margin:                  0px 0px 16px 0px;
+    padding:                 16px 20px;
+    border-radius:           12px;
+    background-color:        @bg1;
+    text-color:              @fg0;
+    border:                  1px;
+    border-color:            rgba(88, 166, 255, 0.2);
+    children:                [ "prompt", "entry" ];
 }
 
 prompt {
-    enabled: false;
+    enabled:                 true;
+    background-color:        transparent;
+    text-color:              @accent;
+    font:                    "MesloLGSDZ Nerd Font Bold 13";
 }
 
-message{
-    /* For errors */
-    content: "";
-    border: 0px;
-    text-color: red;
-    font: "Open-Sans Thin 12";
-}
-textbox {
-    text-color: inherit;
-    font:inherit;
+textbox-prompt-colon {
+    enabled:                 true;
+    expand:                  false;
+    str:                     "";
+    background-color:        transparent;
+    text-color:              @accent;
 }
 
+entry {
+    enabled:                 true;
+    background-color:        transparent;
+    text-color:              @fg0;
+    cursor:                  text;
+    placeholder:             "Search...";
+    placeholder-color:       rgba(125, 133, 144, 0.6);
+}
+
+/* ---- Mode Switcher ---- */
+mode-switcher{
+    enabled:                 true;
+    spacing:                 6px;
+    margin:                  0px 0px 12px 0px;
+    padding:                 0px;
+    background-color:        transparent;
+}
+
+button {
+    padding:                 12px 18px;
+    border-radius:           8px;
+    background-color:        @bg1;
+    text-color:              @fg1;
+    cursor:                  pointer;
+    border:                  1px;
+    border-color:            transparent;
+    font:                    "MesloLGSDZ Nerd Font Bold 12";
+}
+
+button selected {
+    background-color:        @accent;
+    text-color:              @bg0;
+    border-color:            @accent;
+}
+
+button hover {
+    background-color:        @bg2;
+    text-color:              @accent;
+    border-color:            rgba(88, 166, 255, 0.3);
+}
+
+/* ---- Listview ---- */
 listview {
-    spacing:    5px;
-    lines:      5;
-    fixed-height: false;
-    border: 0px;
+    enabled:                 true;
+    columns:                 2;
+    lines:                   5;
+    cycle:                   true;
+    dynamic:                 true;
+    scrollbar:               true;
+    layout:                  vertical;
+    reverse:                 false;
+    fixed-height:            true;
+    fixed-columns:           true;
 
-    /* Change these if you dislike the dynamic vertical scaling of the window */
-    dynamic:    true; 
-    require-input: true;
+    spacing:                 8px;
+    margin:                  0px;
+    padding:                 0px;
+    background-color:        transparent;
 }
 
+/* ---- Scrollbar ---- */
+scrollbar {
+    handle-width:            5px;
+    handle-color:            @accent;
+    border-radius:           4px;
+    background-color:        rgba(88, 166, 255, 0.1);
+    margin:                  0px 0px 0px 8px;
+}
+
+/* ---- Elements ---- */
 element {
-    border-radius: 5px;
-    children: [element-icon, element-text];
+    enabled:                 true;
+    spacing:                 10px;
+    margin:                  0px;
+    padding:                 14px;
+    border-radius:           10px;
+    background-color:        @bg1;
+    text-color:              @fg0;
+    cursor:                  pointer;
+    border:                  1px;
+    border-color:            transparent;
 }
 
-element.normal.normal {
-    background-color: transparent;
-    text-color:       @tcolor;
-}
-element.normal.urgent {
-    background-color: transparent;
-    text-color:       @tcolor;
-}
-element.normal.active {
-    background-color: transparent;
-    text-color:       @tcolor;
-}
-element.selected.normal {
-    background-color: @lightbg;
-    text-color:       @tcolor;
-}
-element.selected.urgent {
-    background-color: @lightbg;
-    text-color:       @tcolor;
-}
-element.selected.active {
-    background-color: @lightbg;
-    text-color:       @tcolor;
-}
-element.alternate.normal {
-    background-color: transparent;
-    text-color:       @tcolor;
-}
-element.alternate.urgent {
-    background-color: transparent;
-    text-color:       @tcolor;
-}
-element.alternate.active {
-    background-color: transparent;
-    text-color:       @tcolor;
+element normal.normal {
+    background-color:        @bg1;
+    text-color:              @fg0;
 }
 
-element-text {
-    text-color: inherit;
-    highlight: None;
-    vertical-align: 0.5;
+element selected.normal {
+    background-color:        rgba(88, 166, 255, 0.2);
+    text-color:              @accent-alt;
+    border-color:            @accent;
+}
+
+element normal.urgent {
+    background-color:        rgba(255, 123, 114, 0.12);
+    text-color:              @urgent;
+    border-color:            rgba(255, 123, 114, 0.3);
+}
+
+element selected.urgent {
+    background-color:        rgba(255, 123, 114, 0.25);
+    text-color:              @urgent;
+    border-color:            @urgent;
+}
+
+element normal.active {
+    background-color:        rgba(126, 231, 135, 0.12);
+    text-color:              @active;
+    border-color:            rgba(126, 231, 135, 0.3);
+}
+
+element selected.active {
+    background-color:        rgba(126, 231, 135, 0.25);
+    text-color:              @active;
+    border-color:            @active;
 }
 
 element-icon {
-    enabled: true;
-    size: 40px;
-    padding: 10px 15px;
+    background-color:        transparent;
+    text-color:              inherit;
+    size:                    36px;
+    cursor:                  inherit;
 }
 
-scrollbar {
-    handle-color: @lightbg;
+element-text {
+    background-color:        transparent;
+    text-color:              inherit;
+    cursor:                  inherit;
+    horizontal-align:        0.0;
 }
 
-inputbar {
-    children:   [ entry,case-indicator, icon-search ];
+element-text selected.normal {
+    text-color:              @accent-alt;
+    font:                    "MesloLGSDZ Nerd Font SemiBold 10";
 }
 
-/* Search icon on the right */
-icon-search {
-    expand: false;
-    filename: "searchicon_b3.svg";
-    size: 30px;
-    padding: 12.5px 17.5px;
-    vertical-align: 0.5;
+/* ---- Message ---- */
+message {
+    enabled:                 true;
+    margin:                  0px 0px 12px 0px;
+    padding:                 0px;
+    border-radius:           10px;
+    background-color:        transparent;
 }
 
+textbox {
+    padding:                 14px;
+    border-radius:           10px;
+    background-color:        @bg1;
+    text-color:              @accent;
+    horizontal-align:        0.0;
+}
+
+error-message {
+    padding:                 14px;
+    border-radius:           10px;
+    background-color:        rgba(255, 123, 114, 0.15);
+    text-color:              @urgent;
+}
+
+/* ---- Listbox (container for message and listview) ---- */
+listbox {
+    spacing:                 0px;
+    padding:                 0px;
+    background-color:        transparent;
+    children:                [ "message", "listview" ];
+}
+
+/* ---- Additional polish ---- */
+num-filtered-rows,
+num-rows {
+    expand:                  false;
+    background-color:        transparent;
+    text-color:              rgba(125, 133, 144, 0.6);
+    font:                    "MesloLGSDZ Nerd Font 9";
+}
+
+textbox-num-sep {
+    expand:                  false;
+    str:                     "/";
+    background-color:        transparent;
+    text-color:              rgba(125, 133, 144, 0.6);
+}
