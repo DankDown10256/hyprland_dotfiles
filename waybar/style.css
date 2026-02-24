@@ -73,7 +73,7 @@ tooltip {
     color: #ffffff;
 }
 #workspaces button.active {
-    color: #1062e6;
+    color: #000000;
     border: none;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
@@ -83,13 +83,13 @@ tooltip {
     text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
 }
 #workspaces button.empty:hover {
-    color: #1062e6;
+    color: #000000;
     border: none;
     text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
     transition: all 1s ease;
 }
 #workspaces button.empty.active {
-    color: #1062e6;
+    color: #000000;
     border: none;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
