@@ -6,7 +6,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
 
-// This is a separate power menu for ALT+F4
+// Power menu style Gruvbox
 
 PanelWindow {
     id: win
@@ -42,13 +42,15 @@ PanelWindow {
 
     QtObject {
         id: theme
-        property color card: win.isDarkMode ? "#172022" : "#EBE9DE"
-        property color tile: win.isDarkMode ? "#232A2E" : "#E2DFD3"
-        property color tileHover: win.isDarkMode ? "#2D353B" : "#D1CEC0"
-        property color text: win.isDarkMode ? "#D3C6AA" : "#5C6A72"
-        property color accent: win.isDarkMode ? '#859866' : "#6c8453"
-        property color danger: win.isDarkMode ? "#E67E80" : "#F85552"
-        property color activeText: win.isDarkMode ? "#1e2326" : "#F2F0E5"
+        // --- PALETTE GRUVBOX ---
+        property color card: win.isDarkMode ? "#282828" : "#fbf1c7"       // bg0 / fg0
+        property color tile: win.isDarkMode ? "#3c3836" : "#ebdbb2"       // bg1 / fg1
+        property color tileHover: win.isDarkMode ? "#504945" : "#d5c4a1"  // bg2 / fg2
+        property color text: win.isDarkMode ? "#ebdbb2" : "#3c3836"       // fg / bg
+        property color accent: win.isDarkMode ? '#b8bb26' : "#79740e"     // Green
+        property color danger: win.isDarkMode ? "#fb4934" : "#9d0006"     // Red
+        property color activeText: win.isDarkMode ? "#282828" : "#fbf1c7" // Contrast text
+        property color border: win.isDarkMode ? "#665c54" : "#bdae93"     // bg4 / fg4
         property url activeImg: win.isDarkMode ? win.imgDark : win.imgLight
     }
 
@@ -69,7 +71,7 @@ PanelWindow {
 
     Rectangle {
         anchors.fill: parent
-        color: win.isDarkMode ? "#66000000" : "#44ffffff"
+        color: win.isDarkMode ? "#CC1d2021" : "#CCf9f5d7" // Background dim (bg0_h)
 
         MouseArea {
             anchors.fill: parent
@@ -90,21 +92,17 @@ PanelWindow {
         width: 400
         height: 300
         
-        // To prevent fractional blur
         x: Math.round((parent.width - width) / 2)
         y: Math.round(((parent.height - height) / 2) + ((1 - Math.min(1, intro)) * 60))
         
         focus: true
 
-        // Entry animation progress
         property real intro: 0
         property real introBlur: 18
 
         SequentialAnimation {
             running: true
-
             ParallelAnimation {
-                // Main intro: fade/slide/scale driver
                 PropertyAnimation {
                     target: root
                     property: "intro"
@@ -113,8 +111,6 @@ PanelWindow {
                     duration: 260
                     easing.type: Easing.OutExpo
                 }
-
-                // Blur clears as it comes in
                 PropertyAnimation {
                     target: root
                     property: "introBlur"
@@ -124,7 +120,6 @@ PanelWindow {
                     easing.type: Easing.OutCubic
                 }
             }
-
             PropertyAnimation {
                 target: root
                 property: "intro"
@@ -141,11 +136,9 @@ PanelWindow {
                 duration: 140
                 easing.type: Easing.OutCubic
             }
-
             ScriptAction { script: root.forceActiveFocus() }
         }
 
-        // Apply opacity/scale based on intro
         opacity: Math.min(1, intro)
         scale: 0.88 + (0.12 * Math.min(1, intro))
 
@@ -186,14 +179,12 @@ PanelWindow {
                 return
             }
 
-            // Confirm mode
             if (root.pendingCmd !== "") {
                 if (e.key === Qt.Key_Left || e.key === Qt.Key_Right || e.key === Qt.Key_Tab) {
                     root.confirmIndex = (root.confirmIndex === 0) ? 1 : 0
                     e.accepted = true
                     return
                 }
-
                 if (isActivate) {
                     if (root.confirmIndex === 1) run(root.pendingCmd)
                     else {
@@ -204,12 +195,10 @@ PanelWindow {
                     e.accepted = true
                     return
                 }
-
                 e.accepted = true
                 return
             }
 
-            // Selection mode (Left/Right/Tab + Up/Down)
             if (e.key === Qt.Key_Left || (e.key === Qt.Key_Tab && (e.modifiers & Qt.ShiftModifier))) {
                 move(-1); e.accepted = true; return
             }
@@ -267,7 +256,6 @@ PanelWindow {
             Qt.quit()
         }
 
-        // Mask Shape
         Rectangle {
             id: bgMask
             anchors.fill: parent
@@ -275,7 +263,6 @@ PanelWindow {
             visible: false
         }
 
-        // Bottom Layer (Background + Image)
         Item {
             anchors.fill: parent
             layer.enabled: true
@@ -296,12 +283,10 @@ PanelWindow {
             }
         }
 
-        // Middle Layer: Content
         Item {
             anchors.fill: parent
             z: 1 
 
-            // Prevent click-through
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: false
@@ -311,7 +296,7 @@ PanelWindow {
 
             ColumnLayout {
                 anchors.top: parent.top
-                anchors.topMargin: 158 // 150 (Image) + 8 (padding)
+                anchors.topMargin: 158 
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: 2
 
@@ -337,7 +322,6 @@ PanelWindow {
                 Text { id: userName; visible: false; text: "User" }
             }
 
-            // Mode 1: Icons
             Item {
                 anchors.fill: parent
                 opacity: root.pendingCmd === "" ? 1 : 0
@@ -401,7 +385,6 @@ PanelWindow {
                 }
             }
 
-            // Mode 2: Confirmation
             Item {
                 anchors.fill: parent
                 opacity: root.pendingCmd !== "" ? 1 : 0
@@ -472,14 +455,13 @@ PanelWindow {
             }
         }
 
-        // Top Layer: Just Border
         Rectangle {
             anchors.fill: parent
             z: 2
             radius: bgMask.radius
             color: "transparent"
             border.width: 1
-            border.color: win.isDarkMode ? '#d1a8c080' : '#435133'
+            border.color: theme.border
             antialiasing: true
             enabled: false
         }
