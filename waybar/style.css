@@ -1,173 +1,127 @@
-@import url('../../.cache/wal/colors-waybar.css');
-
+/* Gruvbox Dark theme for Waybar */
 * {
-    font-size:15px;
-    font-family: "CodeNewRoman Nerd Font Propo";
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono Nerd Font", monospace;
+    font-size: 13px;
+    min-height: 0;
 }
-window#waybar{
-    all:unset;
+
+window#waybar {
+    background-color: #282828;
+    border: 2px solid #3c3836;
+    border-radius: 8px;
+    color: #ebdbb2;
+    opacity: 0.95;
+    margin: 12px 16px 8px 16px;
 }
-.modules-left {
-    padding:7px;
-    margin:10 0 5 10;
-    border-radius:10px;
-    background: alpha(@background,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+
+button {
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0;
 }
-.modules-center {
-    padding:7px;
-    margin:10 0 5 0;
-    border-radius:10px;
-    color: #ffffff;
-    background: alpha(@background,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
-}
-.modules-right {
-    padding:7px;
-    margin: 10 10 5 0;
-    border-radius:10px;
-    color: #ffffff;
-    background: alpha(@background,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
-}
-tooltip {
-    background:@background;
-    color: @color7;
-    color: #ffffff;
-}
-#clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover{
-    transition: all .3s ease;
-    color:@color9;
-    color: #ffffff;
-}
-#custom-notification {
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color:@color7;
-    color: #ffffff;
-}
-#clock{
-    padding: 0px 5px;
-    color: #ffffff;
-    transition: all .3s ease;
-}
-#custom-pacman{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: #ffffff;
-}
-#workspaces {
-    padding: 0px 5px;
-}
+
 #workspaces button {
-    all:unset;
-    padding: 0px 5px;
-    color: #ffffff;
-    transition: all .2s ease;
+    padding: 0 8px;
+    background-color: transparent;
+    color: #a89984;
 }
+
 #workspaces button:hover {
-    color:rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
-    transition: all 1s ease;
-    color: #ffffff;
-}
-#workspaces button.active {
-    color: #000000;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-#workspaces button.empty {
-    color: #ffffff;
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
-}
-#workspaces button.empty:hover {
-    color: #000000;
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
-    transition: all 1s ease;
-}
-#workspaces button.empty.active {
-    color: #000000;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-#bluetooth{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: #ffffff;
-
-}
-#network{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: #ffffff;
-
-}
-#battery{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: #ffffff;
-
-
-}
-#battery.charging {
-    color: #26A65B;
+    background: #3c3836;
+    color: #ebdbb2;
 }
 
-#battery.warning:not(.charging) {
-    color: #ffbe61;
+#workspaces button.focused {
+    background-color: #fe8019;
+    color: #282828;
+    font-weight: bold;
 }
 
-#battery.critical:not(.charging) {
-    color: #f53c3c;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-#group-expand{
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: #ffffff;
-}
-#custom-expand{
-    padding: 0px 5px;
-    color: #ffffff;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
-    transition: all .3s ease; 
-}
-#custom-expand:hover{
-    color: #1062e6;
-    text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
-}
-#custom-colorpicker{
-    padding: 0px 5px;
-}
-#cpu,#memory,#temperature{
-    padding: 0px 5px;
-    transition: all .3s ease; 
-    color: #ffffff;
-
-}
-#custom-endpoint{
-    color:transparent;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
-
-}
-#tray{
-    padding: 0px 5px;
-    transition: all .3s ease; 
-
-}
-#tray menu * {
-    padding: 0px 5px;
-    transition: all .3s ease; 
+#workspaces button.urgent {
+    background-color: #fb4934;
+    color: #282828;
 }
 
-#tray menu separator {
-    padding: 0px 5px;
-    transition: all .3s ease; 
+#mode {
+    background-color: #fe8019;
+    color: #282828;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+#clock {
+    color: #ebdbb2;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+#cpu {
+    color: #b8bb26;
+    padding: 0 10px;
+}
+
+#memory {
+    color: #83a598;
+    padding: 0 10px;
+}
+
+#network {
+    color: #8ec07c;
+    padding: 0 10px;
+}
+
+#network.disconnected {
+    color: #fb4934;
+}
+
+#pulseaudio {
+    color: #d3869b;
+    padding: 0 10px;
+}
+
+#pulseaudio.muted {
+    color: #928374;
+}
+
+#tray {
+    padding: 0 10px;
+}
+
+#tray > .passive {
+    opacity: 0.6;
+}
+
+#tray > .needs-attention {
+    opacity: 1.0;
+    background-color: #fb4934;
+}
+
+tooltip {
+    background: #3c3836;
+    border: 1px solid #504945;
+    border-radius: 5px;
+    color: #ebdbb2;
+}
+
+tooltip label {
+    color: #ebdbb2;
+}
+
+#custom-notification {
+    color: #fabd2f;
+    padding: 0 10px;
+}
+
+#custom-notification.notification {
+    color: #fe8019;
+}
+
+#custom-notification.dnd {
+    color: #928374;
+}
+
+#custom-notification.dnd-notification {
+    color: #fb4934;
 }
