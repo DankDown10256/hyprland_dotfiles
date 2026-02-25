@@ -1,11 +1,3 @@
-//   _____ _____ _____ _____ _____ _____ _____ _____ _____ 
-//  |   __|  _  |   __|_   _|   __|   __|_   _|     |  |  |
-//  |   __|     |__   | | | |   __|   __| | | |   --|     |
-//  |__|  |__|__|_____| |_| |__|  |_____| |_| |_____|__|__|  MINIMAL
-//
-//  by Bina
-
-
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": null,
@@ -13,38 +5,52 @@
         "separator": " ›  "
     },
     "modules": [
-	"break",
+        "break",
         {
             "type": "os",
             "key": "OS  ",
-            "keyColor": "31",  // = color1
+            "keyColor": "#fb4934"  // Gruvbox Red
         },
         {
             "type": "kernel",
             "key": "KER ",
-            "keyColor": "32",
+            "keyColor": "#b8bb26"  // Gruvbox Green
+        },
+        {
+            "type": "installationage",
+            "key": "AGE ",
+            "keyColor": "#fabd2f"  // Gruvbox Yellow
+        },
+        {
+            "type": "uptime",
+            "key": "UP  ",
+            "keyColor": "#83a598"  // Gruvbox Blue
         },
         {
             "type": "packages",
             "format": "{} (pacman)",
             "key": "PKG ",
-            "keyColor": "33",  
+            "keyColor": "#d3869b"  // Gruvbox Purple
         },
         {
             "type": "shell",
             "key": "SH  ",
-            "keyColor": "34", 
+            "keyColor": "#8ec07c"  // Gruvbox Aqua
         },
         {
             "type": "terminal",
             "key": "TER ",
-            "keyColor": "35", 
+            "keyColor": "#fe8019"  // Gruvbox Orange
         },
         {
             "type": "wm",
             "key": "WM  ",
-            "keyColor": "36", 
+            "keyColor": "#fb4934"  // Gruvbox Red
         },
         "break",
+        {
+            "type": "colors",
+            "symbol": "circle" 
+        }
     ]
 }
