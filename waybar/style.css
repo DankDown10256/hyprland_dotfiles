@@ -1,257 +1,202 @@
+/* BEGIN: Gruvbox color definitions */
+@define-color rosewater #f2e5bc;
+@define-color flamingo  #ea6962;
+@define-color pink      #d3869b;
+@define-color mauve     #b16286;
+@define-color red       #cc241d;
+@define-color maroon    #9d0006;
+@define-color peach     #fe8019;
+@define-color yellow    #d79921;
+@define-color green     #98971a;
+@define-color teal      #689d6a;
+@define-color sky       #458588;
+@define-color sapphire  #83a598;
+@define-color blue      #83a598;
+@define-color lavender  #bdae93;
+@define-color text      #ebdbb2;
+@define-color subtext1  #d5c4a1;
+@define-color subtext0  #bdae93;
+@define-color overlay2  #a89984;
+@define-color overlay1  #928374;
+@define-color overlay0  #7c6f64;
+@define-color surface2  #665c54;
+@define-color surface1  #504945;
+@define-color surface0  #3c3836;
+@define-color base      #32302f;
+@define-color mantle    #282828;
+@define-color crust     #1d2021;
+/* END: Gruvbox color definitions */
+
 * {
-  border: none;
-  font-family: Hack Nerd Font;
-  font-weight: 800;
-  font-size: 13px;
-  min-height: 0;
+  padding: 0;
+  margin: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+}
+
+/* ------ Set a Uniform Border Radius ------ */
+.modules-left, .modules-center, .modules-right, #cpu, #memory, #temperature, #wireplumber, #backlight, #custom-spotify, #custom-icon, #custom-updates, #language, #network, #battery, #battery#bat1, #tray, #idle_inhibitor, #custom-power, #custom-notification {
+  border-radius: 18px;
+}
+
+/* ------ Modules Left ------ */
+.modules-left {
+  background-color: @base;
+  padding-right: 5px;
+  padding-left: 13px;
+}
+
+/* ------ Modules Center ------ */
+.modules-center {
+  background-color: @base;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+/* ------ Modules Right ------ */
+.modules-right {
+  background-color: @base;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+/* ------ Window Title ------ */
+#window { 
+  color: @text; 
+  padding-right: 4px;
 }
 
 window#waybar {
-  background: none;
-  margin: 0px;
-  padding: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 0px solid #ffffff;
+  background: transparent;
+  transition-property: background-color;
+  transition-duration: .5s;
 }
 
-tooltip {
-  background: rgba(40, 40, 40, 0.76);
-  border-radius: 4px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  color: #ebdbb2;
-}
-
-#workspaces button {
-  border: none;
-  transition-duration: 0.3s;
-  background: none;
-  box-shadow: inherit;
-  text-shadow: inherit;
-  color: #928374;
-  padding: 3px;
-  padding-left: 3px;
-  padding-right: 3px;
-}
-
-#workspaces button.persistent {
-  color: #928374;
-}
+/* -----------------------------------------------------
+ * Workspaces 
+ * ----------------------------------------------------- */
 
 #workspaces button.empty {
-  color: #504945;
-}
-
-#workspaces button.special {
-  color: #b8bb26;
-}
-
-#workspaces button.visible {
-  color: #ebdbb2;
-}
-
-#workspaces button:hover {
-  color: #d79921;
-}
-
-#workspaces button.active {
-  color: #ebdbb2;
-}
-
-#workspaces button.urgent {
-  color: #cc241d;
-}
-
-#language,
-#custom-updates,
-#custom-weather,
-#window,
-#custom-playerctl,
-#clock,
-#battery,
-#pulseaudio,
-#network,
-#workspaces,
-#tray,
-#cava,
-#keyboard-state,
-#idle_inhibitor,
-#custom-power {
-  background: none;
-  padding: 0px 10px;
-  margin: 0px;
-  margin-top: 5px;
-  margin-bottom: 0px;
-}
-
-#tray {
-  background: rgba(40, 40, 40, 0.76);
-  border-radius: 4px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  margin-right: 4px;
-  margin-left: 4px;
-  padding-right: 8px;
-  padding-left: 9px;
-  padding-top: 2px;
-  color: #ebdbb2;
+  color: @surface2;
+  font-family: JetBrainsMono Nerd Font;
 }
 
 #workspaces {
-  background: rgba(40, 40, 40, 0.76);
-  border-radius: 4px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  margin-left: 4px;
-  padding-right: 6px;
-  padding-left: 4px;
+  margin: 0px 1px 0px 1px;
+  padding: 0px 1px;
+  font-family: JetBrainsMono Nerd Font;
 }
 
+#workspaces button {
+  padding: 0px 2px;
+  margin: 4px 2px;
+  color: @yellow;
+  font-family: JetBrainsMono Nerd Font;
+}
+
+#workspaces button:hover {
+  opacity: 0.5;
+}
+
+/* ------ Wireplumber ------ */
+#wireplumber {
+  color: @peach;
+  background-color: @surface1;
+  padding: 2px 8px;
+  margin: 4px 2px;
+}
+
+/* ------ Backlight ------ */
+#backlight {
+  color: @sky;
+  background-color: @surface1;
+  padding: 2px 8px;
+  margin: 4px 2px;
+}
+
+/* ------ Language ------ */
 #language {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-right: 0px;
-  border-radius: 4px 0px 0px 4px;
-  min-width: 24px;
+  color: @teal;
+  background-color: @surface1;
+  padding: 2px 8px;
+  margin: 4px 2px;
 }
 
-#keyboard-state {
-  background: none;
-  color: #ebdbb2;
-  border: none;
-  padding-top: 1px;
-}
-
-#custom-updates {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-radius: 0px 4px 4px 0px;
-  border-width: 2px;
-  border-left: 0px;
-  border-style: solid;
-  border-color: #ebdbb2;
-}
-
-#window {
-  background: rgba(40, 40, 40, 0.76);
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-radius: 4px;
-  margin-left: 30px;
-  margin-right: 30px;
-  color: #ebdbb2;
-}
-
-#custom-playerctl {
-  background: rgba(40, 40, 40, 0.76);
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-right: 0px;
-  border-left: 0px;
-  color: #ebdbb2;
-}
-
-#cava {
-  background: rgba(40, 40, 40, 0.76);
-  border-radius: 4px 0px 0px 4px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-right: 0px;
-  margin-left: 4px;
-  color: #ebdbb2;
-}
-
-#clock {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-radius: 0px;
-  border-right: 0px;
-  border-left: 0px;
-}
-
+/* ------ Network ------ */
 #network {
-  color: #ebdbb2;
-  border-left: 0px;
-  border-right: 0px;
+  color: @sapphire;
+  background-color: @surface1;
+  padding: 2px 8px;
+  margin: 4px 2px;
 }
 
-#pulseaudio {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-right: 0px;
-  border-left: 0px;
-  border-radius: 0px;
-}
-
-#pulseaudio.microphone {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-radius: 0px 4px 4px 0px;
-  border-left: 0px;
-  margin-right: 4px;
-}
-
+/* ------ Battery ------ */
 #battery {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-radius: 0px;
-  border-right: 0px;
-  border-left: 0px;
+  color: @teal;
+  background-color: @surface1;
+  padding: 2px 5px;
+  margin: 4px 2px;
+}
+
+/* ------ Clock ------ */
+#clock {
+  padding: 0 10px;
+  color: @text;
+  font-weight: bold;
+  font-size: 13px;
 }
 
 #custom-weather {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-radius: 4px 0px 0px 4px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-right: 0px;
-  margin-left: 4px;
-  padding-right: 7px;
-  padding-top: 1px;
+  padding-right: 5px;
 }
 
-#idle_inhibitor {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-left: 0px;
-  border-right: 0px;
-  border-radius: 0px;
-  min-width: 18px;
+/* ------ System Tray ------ */
+#tray {
+  background-color: @surface1;
+  padding: 2px 5px;
+  margin: 4px 2px;
+}
+
+/* ------ Custom Modules ------ */
+#custom-icon {
+  font-size: 18px;
+  color: @teal;
+  padding-right: 5px;
 }
 
 #custom-power {
-  background: rgba(40, 40, 40, 0.76);
-  color: #ebdbb2;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #ebdbb2;
-  border-radius: 0px 4px 4px 0px;
-  border-left: 0px;
-  margin-left: 0px;
-  margin-right: 4px;
-  padding-right: 14px;
+  color: @teal;
+  background-color: @surface1;
+  padding: 2px 9px;
+  padding-right: 10px;
+  margin: 4px 2px;
+  font-size: 15px;
 }
+
+#custom-notifications {
+  color: @yellow;
+  background-color: @surface1;
+  padding: 2px 9px;
+  padding-right: 11px;
+  margin: 4px 2px;
+  font-size: 15px;
+  border-radius: 50px;
+}
+
+#idle_inhibitor {
+  color: @green;
+  background-color: @surface1;
+  padding: 2px 9px;
+  margin: 5px 2px;
+  font-size: 15px;
+}
+
+/* ------ Tooltip ------ */
+tooltip {
+  background: @base;
+  border: 1px solid @blue;
+}
+
+

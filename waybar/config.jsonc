@@ -1,191 +1,158 @@
 {
-    "layer": "top",
-    "position": "top",
-    "mode": "dock",
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "ipc": false,
-    "reload_style_on_change": true,
-    "height": 0,
-    "modules-left": [
-        "custom/weather",
-        "custom/updates",
-        "hyprland/workspaces"
-    ],
-    "modules-center": [ 
-        "custom/playerctl",
-        "pulseaudio",
-        "pulseaudio#microphone"
-    ],
-    "modules-right": [
-        "keyboard-state",
-        "tray",
-        "hyprland/language",
-        "clock",
-        "idle_inhibitor",
-        "custom/power"
-    ],
-    "hyprland/window": {
-        "format": "{}"
-    },
-    "hyprland/workspaces": {
-        "disable-scroll": false,
-        "all-outputs": true,
-        "show-special": true,
-        "on-scroll-up": "hyprctl dispatch workspace m-1",
-        "on-scroll-down": "hyprctl dispatch workspace m+1",
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-              "1": "󰟀",
-              "2": "󰌀",
-              "3": "󰉋",
-              "4": "󰓇",
-              "5": "󰺻",
-              "6": "󰐌",
-              "7": "󰭹",
-              "8": "",
-              "9": "󰌽",
-              "10": "󰚌",
-              "urgent": "",
-              "default": "󰐗",
-              "magic": "󰓏"
-        },
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": [],
-            "10": []
-        },
-        "sort-by-number": true
-    },
-    "custom/updates": {
-        "format": "󰚰 {}",
-        "interval": 300,                     // every 5 min
-        "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'",       // # of updates and tooltip details
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "kitty -e yay -Syu", // update system
-        "signal": 8
-    },
-    "hyprland/language": {
-        "format": "{}",
-        "format-en": "English",
-        "format-ru": "Русский"
-    },
-    "keyboard-state": {
-        "numlock": false,
-        "scrolllock": false,
-        "capslock": true,
-        "format": "{icon}",
-        "format-icons": {
-            "locked": "Capslock",
-            "unlocked": ""
-        }
-    },   
-    "idle_inhibitor": {
-        "tooltip": false,
-        "format": "{icon}",
-        "start-activated": false,
-        "format-icons": {
-            "activated": " ",
-            "deactivated": " "
-        }
-    },
-    "custom/weather" : {
-        "tooltip" : true,
-        "format" : "{}",
-        "interval" : 30,
-        "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
-        "return-type" : "json"
-    },
-    "tray": {
-        "icon-size": 11,
-        "spacing": 8
-    },
-    "clock": {
-        "locale": "fr_FR.UTF-8",
-        "timezone": "Europe/Paris",
-        "format": "{:L%R  %d/%m %a}",
-        "tooltip-format": "<span font='JuliaMono 11'><tt><small>{calendar}</small></tt></span>",
+  "layer": "top",
+  "position": "top",
+  "spacing": 4,
+  "margin-top": 5,
+  "margin-bottom": 0,
+  "margin-left": 5,
+  "margin-right": 5,
+
+  "modules-left": [
+    "custom/icon",
+    "hyprland/workspaces",
+    "hyprland/window",
+  ],
+
+  "modules-center": [
+    "clock",
+    "custom/weather",
+  ],
+
+  "modules-right": [
+    "backlight",
+    "wireplumber",
+    "hyprland/language",
+    "network",
+    "battery",
+    "tray",
+    "idle_inhibitor",
+    "custom/power",
+    "custom/notifications",
+  ],
+
+  "hyprland/language": {
+    "format": " {}",
+  },
+
+  "custom/icon": {
+    "exec": "~/.dots/config/waybar/os_icon.sh",
+    "interval": "once",
+    "format": "{}",
+    "on-click": "rofi -show drun",
+    "tooltip": false 
+  },
+
+  "clock": {
+		"format": "<b>󰥔  {:%H:%M   󰃭  %d.%m}</b> ",
+		//"format": "{:%a}",
+		"tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
-            "mode": "year",
-            "mode-mon-col": 3,
-            "format": {
-                "months":     "<span color='#504945'><b>{}</b></span>",
-                "days":       "<span color='#ebdbb2'><b>{}</b></span>",
-                "weeks":      "<span color='#928374'><b>W{}</b></span>",
-                "weekdays":   "<span color='#7c6f64'><b>{}</b></span>",
-                "today":      "<span color='#d79921'><b><u>{}</u></b></span>"
-            }
-        }
+                    "mode"          : "month",
+                    "format": {
+                              "months":     "<span color='#cdd6f4'><b>{}</b></span>",
+                              "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                              "weeks":      "<span color='#cdd6f4'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#cdd6f4'><b>{}</b></span>",
+                              "today":      "<span color='#f38ba8'><b>{}</b></span>"
+                              }
+                    },
     },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
-        "on-click": "pamixer -t",
-        "on-scroll-up": "pamixer -i 2",
-        "on-scroll-down": "pamixer -d 2",
-        "scroll-step": 5,
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        }
-    },
-    "custom/power": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "quickshell -p ~/.config/quickshell/powermenu.qml"
-    },
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": " {volume}%",
-        "tooltip": false,
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 2",
-        "on-scroll-down": "pamixer --default-source -d 2",
-        "scroll-step": 5
-    },
-    "custom/playerctl": {
-        "format": "{2} <span>{0}</span>",
-        "return-type": "json",
-        "exec": "playerctl -p ncspot metadata -f '{\"text\": \"{{markup_escape(title)}} - {{markup_escape(artist)}}  {{ duration(position) }}/{{ duration(mpris:length) }}\", \"tooltip\": \"{{markup_escape(title)}} - {{markup_escape(artist)}}  {{ duration(position) }}/{{ duration(mpris:length) }}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-        "tooltip": false,
-        "on-click-middle": "playerctl -p spotify previous",
-        "on-click": "playerctl -p spotify play-pause",
-        "on-click-right": "playerctl -p spotify next",
-        "on-click-forward": "playerctl -p spotify position 10+",
-        "on-click-backward": "playerctl -p spotify position 10-",
-        "on-scroll-up": "playerctl -p spotify volume 0.02+",
-        "on-scroll-down": "playerctl -p spotify volume 0.02-",
-        "format-icons": {
-            "Paused": " ",
-            "Playing": " "
-        }
-    },
-    
-    "battery": {
-        "bat": "hidpp_battery_0",
-        "interval": 1800,
-        "states": {
-          "warning": 20,
-          "critical": 10
-        },
-        "format": "{icon}",
-        "format-icons": ["", "", "", "", ""],
-        "max-length": 25
+
+  "hyprland/window": {
+    "format": "  {}",
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "󰈹  Firefox",
+      "(.*) - nvim": " Neovim"
     }
+  },
+
+  "hyprland/workspaces" : {
+      "on-click": "activate",
+      "active-only": false,
+      "all-outputs": true,
+      "format": "{icon}",
+      "format-icons": {
+	      "urgent": "",
+	      "active": "",
+        "default": ""
+      },
+      "persistent-workspaces": {
+          "*": 4
+      }       
+  },
+  
+  "backlight": {
+    "format": "{icon} <b>{percent}%</b>",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "tooltip": false,
+   },
+
+  "wireplumber": {
+    "format": "{icon} <b>{volume}%</b>",
+    "format-bluetooth": "{icon}  <b>{volume}%</b>",
+    "format-bluetooth-muted": "󰝟 ",
+    "format-muted": " 󰝟 ",
+    "format-icons": {
+      "headset": "",
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "tooltip": false,
+    "on-click": "pavucontrol",
+  },
+
+  "network": {
+    "interval": 30,
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰈀 Wired",
+    "fomat-disconnected": "󱚵 Disconnected",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰂎", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+    "max-length": 25,
+    "tooltip": false,
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 15,
+  },
+
+   "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "󰈈 ",
+        "deactivated": "󰈉 "
+    },
+  },
+
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "quickshell -p ~/.config/quickshell/powermenu.qml",
+    "tooltip": false,
+  },
+  "custom/notifications": {
+      "format": "",
+      "on-click": "swaync-client -t",
+      "tooltip": true,
+      "tooltip-format": "Notifications"
+  },
+  "custom/weather": {
+      "format": "{}",
+      "tooltip": true,
+      "interval": 1000,
+      "exec": "$HOME/.dots/config/waybar/wttr.py",
+      "return-type": "json",
+  }
 }
+
+
