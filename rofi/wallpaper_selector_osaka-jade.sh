@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-WALL_DIR="/home/lucas/walls/akane/"
+WALL_DIR="/home/lucas/walls/osaka-jade/"
 TARGET_DIR="/home/lucas/current_wallpaper"
 TARGET_NAME="background.jpg"
 
@@ -11,7 +11,7 @@ mkdir -p "$TARGET_DIR"
 # --- Rofi Selector ---
 # On liste le contenu du dossier, on filtre pour ne garder que les images
 # -i : ignore la casse | -dmenu : mode liste | -p : prompt personnalisé
-selected_wall=$(ls "$WALL_DIR" | rofi -dmenu -i -p "󰸉 Akane Wallpapers :")
+selected_wall=$(ls "$WALL_DIR" | rofi -dmenu -i -p "󰸉 Osaka Jade Wallpapers :")
 
 # --- Action ---
 if [[ -n "$selected_wall" ]]; then
