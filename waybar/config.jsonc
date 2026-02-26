@@ -107,7 +107,7 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
-    "on-click": "quickshell -p ~/.config/quickshell/components/WifiPanel.qml"
+    "on-click": "bash ~/.config/rofi/wifimenu.sh"
   },
 
   "battery": {
