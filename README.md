@@ -2,9 +2,7 @@
 
 <div align="center">
 
-![Last Commit](https://img.shields.io/badge/Last_Commit-Feb_2026-8fbcbb?style=for-the-badge)
-![Stars](https://img.shields.io/badge/Stars-7.7k-b4befe?style=for-the-badge)
-![Repo Size](https://img.shields.io/badge/Repo_Size-2.8_MiB-cba6f7?style=for-the-badge)
+
 ![Donate](https://img.shields.io/badge/Ko--fi-Donate-f38ba8?style=for-the-badge)
 
 </div>
