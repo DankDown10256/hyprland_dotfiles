@@ -136,7 +136,7 @@
 
   "custom/power": {
     "format": "󰐥",
-    "on-click": "quickshell -p ~/.config/quickshell/powermenu.qml",
+    "on-click": "bash ~/.config/rofi/powermenu.sh",
     "tooltip": false,
   },
   "custom/notifications": {
