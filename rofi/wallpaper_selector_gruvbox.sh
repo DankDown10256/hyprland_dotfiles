@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-WALL_DIR="/home/lucas/walls/"
+WALL_DIR="/home/lucas/walls/gruvbox"
 TARGET_DIR="/home/lucas/current_wallpaper"
 TARGET_NAME="background.jpg"
 

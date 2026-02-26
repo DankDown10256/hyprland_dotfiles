@@ -1,32 +1,21 @@
 #!/bin/bash
 
-# Configuration du look (optionnel)
-THEME_STR="window { width: 25%; } listview { lines: 4; }"
+# Configuration du look
+THEME_STR="window { width: 25%; } listview { lines: 3; }"
 
-# 1. Définir les catégories du menu principal
-options="🚀 Apps\n⚙️ Config\n🖼 Wallpaper"
+# 1. Définir les catégories avec Nerd Fonts
+# 󰀻 (Apps) |  (Config) | 󰏘 (Theme)
+options="󰀻 Apps\n Config\n󰏘 Theme"
 
-# 2. Afficher le menu et récupérer le choix
-choix=$(echo -e "$options" | rofi -dmenu -i -p "Menu :" -theme-str "$THEME_STR")
+choix=$(echo -e "$options" | rofi -dmenu -i -p "󰣇 System :" -theme-str "$THEME_STR")
 
 case "$choix" in
-    "🚀 Apps")
-        # Relance Rofi en mode drun (le mode normal avec icônes)
-        rofi -show drun
-        ;;
-
-    "⚙️ Config")
-        # Lance ton terminal avec Neovim ouvert dans ton dossier de config
-        # Remplace 'kitty' par ton terminal (alacritty, foot, etc.)
-        kitty nvim "$HOME/.config" &
-        ;;
-
-    "🖼 Wallpaper")
-        # Appelle le script qu'on a créé précédemment
-        bash "$HOME/.config/rofi/wallpaper_selector.sh"
-        ;;
-
+    "󰀻 Apps")
+        rofi -show drun ;;
+    " Config")
+        kitty nvim "$HOME/.config" & ;;
+    "󰏘 Theme")
+        bash "$HOME/.config/rofi/theme_selector.sh" ;;
     *)
-        exit 0
-        ;;
+        exit 0 ;;
 esac
