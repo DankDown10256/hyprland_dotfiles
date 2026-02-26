@@ -16,3 +16,7 @@ output_path = '~/.config/waybar/colors.css'
 [templates.swaync]
 input_path = '~/.config/matugen/templates/swaync.css'
 output_path = '~/.config/swaync/style.css'
+
+[templates.ncspot]
+input_path = '~/.config/matugen/ncspot.toml'
+output_path = '~/.config/ncspot/config.toml'

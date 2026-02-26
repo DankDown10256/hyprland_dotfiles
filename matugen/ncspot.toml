@@ -1,0 +1,38 @@
+use_nerdfont = true
+flip_status_indicators = true
+
+[ncspot]
+draw_covers = true
+cover_backend = "kitty"
+
+[theme]
+# Couleurs de base (Inspiré de ton setup Gruvbox)
+background = "{{colors.surface.default.hex}}"
+primary = "{{colors.on_surface.default.hex}}"
+secondary = "{{colors.on_surface_variant.default.hex}}"
+title = "{{colors.primary.default.hex}}"
+
+# Musique en cours
+playing = "{{colors.primary.default.hex}}"
+playing_selected = "{{colors.on_primary_container.default.hex}}"
+playing_bg = "{{colors.primary_container.default.hex}}"
+
+# Points saillants et sélection
+highlight = "{{colors.on_secondary_container.default.hex}}"
+highlight_bg = "{{colors.secondary_container.default.hex}}"
+
+# Erreurs
+error = "{{colors.error.default.hex}}"
+error_bg = "{{colors.error_container.default.hex}}"
+
+# Barre de statut
+statusbar = "{{colors.on_surface_variant.default.hex}}"
+statusbar_progress = "{{colors.primary.default.hex}}"
+statusbar_bg = "{{colors.surface_container_high.default.hex}}"
+
+# Ligne de commande
+cmdline = "{{colors.on_surface.default.hex}}"
+cmdline_bg = "{{colors.surface_container_high.default.hex}}"
+
+# Recherche
+search_match = "{{colors.tertiary.default.hex}}"

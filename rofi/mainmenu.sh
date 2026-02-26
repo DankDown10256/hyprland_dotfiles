@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration du look
-THEME_STR="window { width: 25%; } listview { lines: 3; }"
+THEME_STR="window { width: 25%; } listview { lines: 4; }"
 
 # 1. Définir les catégories avec Nerd Fonts
 # 󰀻 (Apps) |  (Config) | 󰏘 (Theme)
