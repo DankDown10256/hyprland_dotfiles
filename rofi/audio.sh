@@ -1,20 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# 1. Récupérer la liste des sorties (Sinks)
-# On extrait l'ID et le nom lisible (Description)
-sinks=$(pactl list sinks | grep -E 'Sink #|Description:' | awk -F': ' '{
-    if ($1 ~ /Sink #/) {id=$2}
-    else {print id " - " $2}
-}')
+# --- CONFIGURATION ---
+BT_SCRIPT="$HOME/.config/rofi/bluetooth.sh"
+BT_ICON="󰂯 Gestion Bluetooth"
 
-# 2. Afficher le menu Rofi
-selected=$(echo "$sinks" | rofi -dmenu -i -p "Sortie Audio" -l 10)
+# --- RÉCUPÉRATION DES SORTIES AUDIO ---
+# On récupère la liste des noms des sorties (Sinks) via PulseAudio/Pipewire
+sinks=$(pactl list short sinks | awk '{print $2}')
 
-# 3. Extraire l'ID de la sélection
-sink_id=$(echo "$selected" | awk '{print $1}')
+# --- CONSTRUCTION DU MENU ---
+# On met le Bluetooth en premier, puis la liste des sorties audio
+options="$BT_ICON\n$sinks"
 
-# 4. Appliquer le changement si une sélection a été faite
-if [ -n "$sink_id" ]; then
-    pactl set-default-sink "$sink_id"
-    notify-send "Audio" "Sortie changée vers : ${selected#* - }" -i audio-speakers
+chosen=$(echo -e "$options" | rofi -dmenu -i -p "Sortie Audio / Bluetooth")
+
+# --- LOGIQUE DE SÉLECTION ---
+if [ "$chosen" = "$BT_ICON" ]; then
+    # Si on choisit Bluetooth, on lance ton script
+    bash "$BT_SCRIPT"
+elif [ -n "$chosen" ]; then
+    # Sinon, on définit la sortie audio choisie par défaut
+    pactl set-default-sink "$chosen"
+    notify-send "Audio" "Sortie changée vers : $chosen"
 fi
