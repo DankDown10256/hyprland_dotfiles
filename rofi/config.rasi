@@ -4,6 +4,7 @@ configuration {
     display-drun:               " ";
     display-run:                " ";
     drun-display-format:        "{name}";
+    terminal: "kitty";
     font:                       "JetBrainsMono Nerd Font 10";
 }
 
