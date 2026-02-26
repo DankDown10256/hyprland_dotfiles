@@ -23,6 +23,7 @@ if [[ -n "$selected_wall" ]]; then
 
     # 2. Copier vers le fichier statique background.jpg
     cp "$FULL_PATH" "$TARGET_DIR/$TARGET_NAME"
+    matugen image "/home/lucas/current_wallpaper/background.jpg"
 
     # 3. Notification optionnelle
     notify-send "Wallpaper Updated !" "Enjoy rour new wallpaper" --icon=image-x-generic
