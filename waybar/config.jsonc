@@ -41,7 +41,6 @@
     "on-click": "rofi -show drun",
     "tooltip": false 
   },
-
   "clock": {
 		"format": "<b>󰥔  {:%H:%M   󰃭  %d.%m}</b> ",
 		//"format": "{:%a}",
@@ -108,7 +107,7 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
-    "on-click": "nm-connection-editor"
+    "on-click": "quickshell -p ~/.config/quickshell/components/WifiPanel.qml"
   },
 
   "battery": {
