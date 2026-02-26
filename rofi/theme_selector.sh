@@ -2,7 +2,7 @@
 
 THEME_STR="window { width: 20%; } listview { lines: 9; }"
 
-options="󱄄 Gruvbox\n󰈊 Other\nAkane\nWallhaven\nArch Riot\nCpUnk\nCyberpunk\nDelorean\nOsaka Jade"
+options="󱄄 Gruvbox\n󰈊 Other\nAkane\nAnime\nWallhaven\nArch Riot\nCpUnk\nCyberpunk\nDelorean\nOsaka Jade"
 
 choix=$(echo -e "$options" | rofi -dmenu -i -p "󱥚 Style :" -theme-str "$THEME_STR")
 
@@ -13,6 +13,8 @@ case "$choix" in
         bash "$HOME/.config/rofi/wallpaper_selector.sh" ;;
     "Akane")
         bash "$HOME/.config/rofi/wallpaper_selector_akane.sh" ;;
+    "Anime")
+        bash "$HOME/.config/rofi/wallpaper_selector_anime.sh" ;;
     "Wallhaven")
         bash "$HOME/.config/rofi/wallpaper_selector_wallhaven.sh" ;;
     "Arch Riot")
