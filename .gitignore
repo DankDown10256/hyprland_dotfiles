@@ -1,1 +1,7 @@
-walls/botw_marecage_link.jpg.xmp
+# Sessions et Cache
+ncspot/userstate.cbor
+quickshell/app_usage.json
+quickshell/state/
+
+# Si tu as des secrets dans tes scripts
+*.secret
