@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Options
-shutdown='󰐥 Déconnexion'
+shutdown='󰐥 Eteindre'
 reboot='󰜉 Redémarrer'
 lock='󰌾 Verrouiller'
 suspend='󰤄 Veille'
