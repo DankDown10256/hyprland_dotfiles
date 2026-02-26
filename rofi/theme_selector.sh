@@ -3,7 +3,7 @@
 THEME_STR="window { width: 20%; } listview { lines: 2; }"
 
 # 󱄄 (Gruvbox/Retro) | 󰈊 (Other/Palette)
-options="󱄄 Gruvbox\n󰈊 Other\nAkane"
+options="󱄄 Gruvbox\n󰈊 Other\nAkane\nWallhaven"
 
 choix=$(echo -e "$options" | rofi -dmenu -i -p "󱥚 Style :" -theme-str "$THEME_STR")
 
@@ -14,6 +14,8 @@ case "$choix" in
         bash "$HOME/.config/rofi/wallpaper_selector.sh" ;;
     "Akane")
         bash "$HOME/.config/rofi/wallpaper_selector_akane.sh" ;;
+     "Wallhaven")
+        bash "$HOME/.config/rofi/wallpaper_selector_wallhaven.sh" ;;
     *)
         exit 0 ;;
 esac
