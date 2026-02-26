@@ -96,7 +96,7 @@
       "default": ["󰕿", "󰖀", "󰕾"],
     },
     "tooltip": false,
-    "on-click": "pavucontrol",
+    "on-click": "~/.config/rofi/audio.sh",
   },
 
   "network": {
