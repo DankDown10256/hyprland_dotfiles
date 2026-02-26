@@ -2,21 +2,23 @@
 
 <div align="center">
 
-![Last Commit](https://img.shields.io/badge/Last_Commit-Last_Tuesday-8fbcbb?style=for-the-badge)
+![Last Commit](https://img.shields.io/badge/Last_Commit-Feb_2026-8fbcbb?style=for-the-badge)
 ![Stars](https://img.shields.io/badge/Stars-7.7k-b4befe?style=for-the-badge)
 ![Repo Size](https://img.shields.io/badge/Repo_Size-2.8_MiB-cba6f7?style=for-the-badge)
 ![Donate](https://img.shields.io/badge/Ko--fi-Donate-f38ba8?style=for-the-badge)
-![Discord](https://img.shields.io/badge/Discord-458-94e2d5?style=for-the-badge)
 
 </div>
 
----
+### 🖥️ OS Overview
+<div align="center">
 
-## 📂 System Overview
+![OS](https://img.shields.io/badge/OS-Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white)
+![WM](https://img.shields.io/badge/WM-Hyprland-33ccff?style=for-the-badge&logo=hyprland&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell-Zsh-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![Editor](https://img.shields.io/badge/Editor-NvChad-98C379?style=for-the-badge&logo=neovim&logoColor=white)
+![Design](https://img.shields.io/badge/Design-Matugen-fab387?style=for-the-badge)
 
-| OS | WM | Shell | Editor | Theme |
-| :---: | :---: | :---: | :---: | :---: |
-| 🟦 **Arch** | 🧊 **Hyprland** | 🐚 **Zsh** | ⚡ **NvChad** | 🎨 **Matugen** |
+</div>
 
 ---
 
@@ -25,27 +27,28 @@
 > [!IMPORTANT]
 > Cet environnement est une **Workstation de développement** optimisée pour la vitesse, le tiling et l'esthétique dynamique.
 
-### 🖥️ Window Management
-* **Window Manager** ➜ [Hyprland](https://hyprland.org/) `(Wayland)`
+### 🖥️ Window Management & UI
+* **Window Manager** ➜ [Hyprland](https://github.com/hyprwm/Hyprland) `(Wayland)`
 * **Status Bar** ➜ [Waybar](https://github.com/Alexays/Waybar) `(Custom CSS)`
 * **Notification Center** ➜ [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 * **Interactive UI** ➜ [Quickshell](https://github.com/outfoxxed/quickshell) `(QML Panels)`
+* **Application Launcher** ➜ [Rofi-Wayland](https://github.com/davatorium/rofi) & [Fuzzel](https://github.com/dnkl/fuzzel)
 
 ### ⌨️ Terminal & Dev Tools
-* **Terminals** ➜ [Kitty](https://sw.kovidgoyal.net/kitty/) & [Ghostty](https://ghostty.org/)
-* **IDE (Neovim)** ➜ [NvChad](https://nvchad.com/) `(Config pré-configurée)`
+* **Terminals** ➜ [Kitty](https://github.com/kovidgoyal/kitty) & [Ghostty](https://github.com/ghostty-org/ghostty)
+* **IDE (Neovim)** ➜ [NvChad](https://github.com/NvChad/NvChad) `(Blazing Fast)`
 * **File Manager** ➜ [Yazi](https://github.com/sxyazi/yazi) `(TUI)`
-* **Application Launcher** ➜ [Rofi-Wayland](https://github.com/davatorium/rofi)
+* **System Fetch** ➜ [Fastfetch](https://github.com/fastfetch-cli/fastfetch)
 
 ---
 
 ## 🎨 Aesthetic & Themes
 
 ### 🌈 Matugen Integration
-Les couleurs de l'ensemble du système (Kitty, Rofi, Waybar) s'adaptent dynamiquement grâce à [Matugen](https://github.com/InioX/matugen).
+La palette de couleurs (Kitty, Rofi, Waybar) est générée dynamiquement via [Matugen](https://github.com/InioX/matugen).
 
 ### 🎭 Custom Shaders
-Une large collection de shaders `.glsl` est incluse pour transformer ton affichage :
+Une collection massive de shaders `.glsl` (situés dans `shaders/`) permet de transformer le rendu visuel :
 * `📺 crt.glsl` • `✨ bloom.glsl` • `❄️ just-snow.glsl` • `🌌 galaxy.glsl`
 
 ---
@@ -58,8 +61,8 @@ Une large collection de shaders `.glsl` est incluse pour transformer ton afficha
 
 ---
 
-## 🚀 Installation
+## 🚀 Quick Start
 
 ```bash
-# Les dépendances principales sur Arch
+# Exemple de dépendances à installer
 sudo pacman -S hyprland waybar kitty rofi-wayland sddm matugen-bin yazi fastfetch
