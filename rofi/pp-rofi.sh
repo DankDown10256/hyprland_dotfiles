@@ -3,7 +3,6 @@
 # --- Configuration ---
 PP_DIR="/home/lucas/pfps/"  # Change le chemin vers ton dossier de PP
 TARGET_DIR="/home/lucas/.config"
-TARGET_FILE="/home/lucas/current_pp/"
 TARGET_NAME="pp.jpg"
 THEME_STR="
   window { width: 40%; } 
@@ -29,7 +28,5 @@ selected_pp=$(list_apps | rofi -dmenu -i -p "󰇄 Choisir PP :" -show-icons -the
 if [[ -n "$selected_pp" ]]; then
     FULL_PATH="$PP_DIR/$selected_pp"
     cp "$FULL_PATH" "$TARGET_FILE"
-    password=$(zenity --password --title="Root Access Needed")
-    echo "$password" | sudo -S bash "/usr/share/sddm/themes/silent/change_avatar.sh" "$FULL_PATH"
     notify-send "Avatar mis à jour" "Nouvelle PP : $selected_pp" -i "$TARGET_FILE"
 fi
