@@ -3,7 +3,7 @@
 <div align="center">
 
 
-![Donate](https://img.shields.io/badge/Ko--fi-Donate-f38ba8?style=for-the-badge)
+[![Donate](https://img.shields.io/badge/Ko--fi-Donate-f38ba8?style=for-the-badge)](https://ko-fi.com/dankdown)
 
 </div>
 
