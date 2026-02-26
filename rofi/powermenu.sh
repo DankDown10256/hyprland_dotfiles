@@ -20,15 +20,15 @@ run_rofi() {
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
-		systemctl poweroff ;;
+		shutdown now ;;
     $reboot)
-		systemctl reboot ;;
+		reboot ;;
     $lock)
-		i3lock ;; # Ou hyprlock / swaylock selon ton setup
+		hyprlock ;; # Ou hyprlock / swaylock selon ton setup
     $suspend)
 		mpc -q pause
 		amixer set Master mute
 		systemctl suspend ;;
     $logout)
-		loginctl terminate-user $USER ;;
+		command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit ;;
 esac
