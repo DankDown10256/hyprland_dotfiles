@@ -21,7 +21,7 @@
 
 ## 🎬 Showcase
 <div align="center">
-  <video src="showcase_hyprland.mp4" width="100%" controls autoplay muted loop>
+  <video src="https://raw.githubusercontent.com/DankDown10256/hyprland_dotfiles/refs/heads/main/showcase_hyprland.mp4" width="100%" controls autoplay muted loop>
     Votre navigateur ne supporte pas la lecture de vidéos.
   </video>
 </div>
