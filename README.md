@@ -62,5 +62,6 @@ Une collection massive de shaders `.glsl` (situés dans `shaders/`) permet de tr
 ## 🚀 Quick Start
 
 ```bash
-# Exemple de dépendances à installer
-sudo pacman -S hyprland waybar kitty rofi-wayland sddm matugen-bin yazi fastfetch
+#Dependencies
+sudo pacman -S hyprland hypridle hyprlock waybar swaync dunst pavucontrol nwg-look lxappearance matugen python-pywal ghostty yazi fastfetch
+yay -S hyprpanel aylurs-gtk-shell hyprshade hyprshot hyprfindr hyprquickframe-git hyprmode waypaper swww avizo pimpmyrice greenclip bemoji bibata-cursor-gruvbox-git sweet-cursors-hyprcursor-git vimix-kanagawa-hyprcursors gruvbox-material-gtk-theme-git clock-rs-git wallhaven-cli
