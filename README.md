@@ -2,7 +2,6 @@
 
 <div align="center">
 
-
 [![Donate](https://img.shields.io/badge/Ko--fi-Donate-f38ba8?style=for-the-badge)](https://ko-fi.com/dankdown)
 
 </div>
@@ -16,6 +15,15 @@
 ![Editor](https://img.shields.io/badge/Editor-NvChad-98C379?style=for-the-badge&logo=neovim&logoColor=white)
 ![Design](https://img.shields.io/badge/Design-Matugen-fab387?style=for-the-badge)
 
+</div>
+
+---
+
+## 🎬 Showcase
+<div align="center">
+  <video src="showcase_hyprland.mp4" width="100%" controls autoplay muted loop>
+    Votre navigateur ne supporte pas la lecture de vidéos.
+  </video>
 </div>
 
 ---
