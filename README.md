@@ -20,12 +20,7 @@
 ---
 
 ## 🎬 Showcase
-<div align="center">
-  <video src="showcase.mp4" width="100%" controls autoplay muted loop>
-    Votre navigateur ne supporte pas la lecture de vidéos.
-  </video>
-</div>
-
+[#See it here](showcase_hyprland.mp4)
 ---
 
 ## 🛠️ Core Components
