@@ -8,44 +8,35 @@
         "break",
         {
             "type": "os",
-            "key": "OS  ",
-            "keyColor": "#fb4934"  // Gruvbox Red
+            "key": "OS  "
         },
         {
             "type": "kernel",
-            "key": "KER ",
-            "keyColor": "#b8bb26"  // Gruvbox Green
+            "key": "KER "
         },
         {
             "type": "installationage",
-            "key": "AGE ",
-            "keyColor": "#fabd2f"  // Gruvbox Yellow
-        },
+            "key": "AGE "        },
         {
             "type": "uptime",
-            "key": "UP  ",
-            "keyColor": "#83a598"  // Gruvbox Blue
+            "key": "UP  "
         },
         {
             "type": "packages",
             "format": "{} (pacman)",
-            "key": "PKG ",
-            "keyColor": "#d3869b"  // Gruvbox Purple
+            "key": "PKG "
         },
         {
             "type": "shell",
-            "key": "SH  ",
-            "keyColor": "#8ec07c"  // Gruvbox Aqua
+            "key": "SH  "
         },
         {
             "type": "terminal",
-            "key": "TER ",
-            "keyColor": "#fe8019"  // Gruvbox Orange
+            "key": "TER "
         },
         {
             "type": "wm",
-            "key": "WM  ",
-            "keyColor": "#fb4934"  // Gruvbox Red
+            "key": "WM  "
         },
         "break",
         {

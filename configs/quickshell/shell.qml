@@ -12,7 +12,7 @@ ShellRoot {
 
     property string configPath: Quickshell.env("HOME") + "/.config/quickshell"
     property string homePath: Quickshell.env("HOME")
-    property string wallpaperPath: homePath + "/wallpapers"
+    property string wallpaperPath: homePath + "wallpapers/"
     property string cachePath: homePath + "/.cache"
     property string statePath: configPath + "/state"
 
@@ -80,14 +80,14 @@ ShellRoot {
     property bool btScanning: false
     property string btConnectingMAC: ""
 
-    property color walBackground: "#1e1e2e"
-    property color walForeground: "#cdd6f4"
-    property color walColor1: "#f38ba8"
-    property color walColor2: "#a6e3a1"
-    property color walColor4: "#f9e2af"
-    property color walColor5: "#89b4fa"
-    property color walColor8: "#6c7086"
-    property color walColor13: "#f5c2e7"
+    property color walBackground: "#282828"
+    property color walForeground: "#ebdbb2"
+    property color walColor1: "#fb4934"
+    property color walColor2: "#b8bb26"
+    property color walColor4: "#fabd2f"
+    property color walColor5: "#83a598"
+    property color walColor8: "#928374"
+    property color walColor13: "#d3869b" 
 
     property int savedGifIndex: 0
 

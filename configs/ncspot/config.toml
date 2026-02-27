@@ -1,36 +1,38 @@
-# ncspot configuration with gruvbox theme
 use_nerdfont = true
 flip_status_indicators = true
 
-# Matches system gruvbox colors used in waybar and other components
+[ncspot]
+draw_covers = true
+cover_backend = "kitty"
+
 [theme]
-# Core colors
-background = "#282828"          # gruvbox dark0
-primary = "#ebdbb2"             # gruvbox light1 - main text
-secondary = "#a89984"           # gruvbox light4 - muted text
-title = "#fe8019"               # gruvbox bright_orange - section titles
+# Couleurs de base (Inspiré de ton setup Gruvbox)
+background = "#0f1416"
+primary = "#dee3e6"
+secondary = "#bfc8cb"
+title = "#85d2e8"
 
-# Playing track colors
-playing = "#b8bb26"             # gruvbox bright_green - currently playing
-playing_selected = "#98971a"    # gruvbox dark_green - selected playing track
-playing_bg = "#3c3836"          # gruvbox dark1 - playing track background
+# Musique en cours
+playing = "#85d2e8"
+playing_selected = "#afecff"
+playing_bg = "#004e5d"
 
-# Highlight colors
-highlight = "#fbf1c7"           # gruvbox light0 - highlighted text
-highlight_bg = "#504945"        # gruvbox dark2 - selection background
+# Points saillants et sélection
+highlight = "#cee7ef"
+highlight_bg = "#344a51"
 
-# Error states
-error = "#fb4934"               # gruvbox bright_red
-error_bg = "#3c3836"            # gruvbox dark1
+# Erreurs
+error = "#ffb4ab"
+error_bg = "#93000a"
 
-# Status bar
-statusbar = "#d5c4a1"           # gruvbox light2
-statusbar_progress = "#fe8019"  # gruvbox bright_orange
-statusbar_bg = "#3c3836"        # gruvbox dark1
+# Barre de statut
+statusbar = "#bfc8cb"
+statusbar_progress = "#85d2e8"
+statusbar_bg = "#252b2d"
 
-# Command line
-cmdline = "#ebdbb2"             # gruvbox light1
-cmdline_bg = "#3c3836"          # gruvbox dark1
+# Ligne de commande
+cmdline = "#dee3e6"
+cmdline_bg = "#252b2d"
 
-# Search highlighting
-search_match = "#fabd2f"        # gruvbox bright_yellow
+# Recherche
+search_match = "#c0c4eb"
