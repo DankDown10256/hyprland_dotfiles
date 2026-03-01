@@ -1,0 +1,36 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 0, // On gère l'espacement via le CSS pour plus de précision
+
+    // On vide LEFT et RIGHT pour ne garder que le centre
+   
+    "modules-center": ["hyprland/workspaces", "network", "pulseaudio"],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-disconnected": "⚠",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}

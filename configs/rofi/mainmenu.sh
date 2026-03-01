@@ -5,7 +5,7 @@ THEME_STR="window { width: 25%; } listview { lines: 5; }"
 
 # 1. Définir les catégories avec Nerd Fonts
 # 󰀻 (Apps) |  (Config) | 󰏘 (Theme)
-options="󰀻 Apps\n󰏘 Theme\nProfile Pictures\nShaders\nWifi\nSSH connect\n Config"
+options="󰀻 Apps\n󰏘 Theme\nWaybar Layouts\nProfile Pictures\nShaders\nWifi\nSSH connect\n Config"
 
 choix=$(echo -e "$options" | rofi -dmenu -i -p "󰣇 System :" -theme-str "$THEME_STR")
 
@@ -14,6 +14,8 @@ case "$choix" in
         rofi -show drun ;;
     "󰏘 Theme")
         bash "$HOME/.config/rofi/theme_selector.sh" ;;
+    "Waybar Layouts")
+        bash "$HOME/.config/rofi/waybar_selector.sh" ;;
     "Profile Pictures")
         bash "$HOME/.config/rofi/pp-rofi.sh" ;;
     "Shaders")

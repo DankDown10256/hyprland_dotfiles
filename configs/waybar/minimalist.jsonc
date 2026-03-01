@@ -1,0 +1,14 @@
+{
+    "layer": "top", // Pour qu'elle soit au-dessus des fenêtres
+    "position": "top", // Ou bottom selon ta préférence
+    "height": 30, // Hauteur fixe pour le côté "carré"
+    "spacing": 4, // Espace entre les modules
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate"
+    }
+}
