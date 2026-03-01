@@ -4,6 +4,7 @@ default_prefix = "@"
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty.conf'
 output_path = '~/.config/kitty/colors.conf'
+post_hook = "kitty +kitten themes --reload-in=all matugen"
 
 [templates.rofi]
 input_path = '~/.config/matugen/templates/rofi.rasi'
@@ -39,3 +40,7 @@ output_path = '/home/lucas/.config/mozilla/firefox/01tcjyrm.default-release/chro
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi-theme.toml'
 output_path = '~/.config/yazi/theme.toml'
+
+[templates.hyprlock]
+input_path  = '~/.config/matugen/templates/hyprlock-colors.conf'
+output_path = '~/.config/hypr/hyprlock-colors.conf'
