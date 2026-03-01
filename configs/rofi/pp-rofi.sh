@@ -2,8 +2,8 @@
 
 # --- Configuration ---
 PP_DIR="/home/lucas/pfps/"  # Change le chemin vers ton dossier de PP
-TARGET_DIR="/home/lucas/.config"
-TARGET_NAME="pp.jpg"
+TARGET_DIR="/home/lucas/current_pfp/"
+TARGET_FILE="pp.jpg"
 THEME_STR="
   window { width: 40%; } 
   listview { columns: 2; lines: 5; } 
@@ -27,6 +27,6 @@ selected_pp=$(list_apps | rofi -dmenu -i -p "󰇄 Choisir PP :" -show-icons -the
 # 3. Action si une image est choisie
 if [[ -n "$selected_pp" ]]; then
     FULL_PATH="$PP_DIR/$selected_pp"
-    cp "$FULL_PATH" "$TARGET_FILE"
+    cp "$FULL_PATH" "$TARGET_DIR/$TARGET_FILE"
     notify-send "Avatar mis à jour" "Nouvelle PP : $selected_pp" -i "$TARGET_FILE"
 fi
