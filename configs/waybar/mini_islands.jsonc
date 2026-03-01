@@ -1,0 +1,134 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+    "spacing": 0,
+
+    "modules-left": [
+        "custom/arch",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "custom/player-prev",
+        "mpris",
+        "custom/player-next"
+    ],
+    "modules-right": [
+        "tray",
+        "group/status",
+        "clock"
+    ],
+
+    "group/hardware": {
+        "orientation": "inherit",
+        "modules": ["cpu", "battery"]
+    },
+
+    "group/status": {
+        "orientation": "inherit",
+        "modules": ["pulseaudio", "bluetooth"]
+    },
+
+    "custom/arch": {
+        "format": "󰣇",
+        "on-click": "kitty",
+        "tooltip": false
+    },
+    "custom/player-prev": {
+        "format": "󰒮",
+        "on-click": "playerctl previous",
+        "tooltip": false
+    },
+
+    "custom/player-next": {
+        "format": "󰒭",
+        "on-click": "playerctl next",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate",
+        "sort-by-number": true,
+        "all-outputs": true,
+        "active-only": false
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 3,
+        "tooltip": true
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-full": "󰁹 {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "interval": 30,
+        "tooltip-format": "{timeTo}\n{power:.1f}W"
+    },
+
+    "mpris": {
+        "format": "{player_icon}  {artist} — {title}",
+        "format-paused": "{player_icon}  {artist} — {title}  󰏤",
+        "format-stopped": "  Nothing playing",
+        "player-icons": {
+            "spotify": "",
+            "default": "󰎆",
+            "chromium": "",
+            "chrome": "",
+            "vlc": "󰕼",
+            "firefox": "󰈹"
+        },
+        "max-length": 50,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl volume 0.02+",
+        "on-scroll-down": "playerctl volume 0.02-",
+        "tooltip-format": "{player}: {title}\n{artist} — {album}\n{position}/{length}"
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱 {num_connections}",
+        "format-disabled": "󰂲",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "blueman-manager",
+        "on-click-right": "bluetoothctl power off"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 mute",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+    },
+
+    "clock": {
+        "format": "  {:%H:%M}",
+        "format-alt": "  {:%a %d %b  %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#b388ff'><b>{}</b></span>",
+                "today": "<span color='#ea80fc'><b><u>{}</u></b></span>"
+            }
+        }
+    }
+}
