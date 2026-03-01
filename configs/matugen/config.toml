@@ -32,6 +32,9 @@ input_path = '~/.config/matugen/templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/cava-colors.ini'
 post_hook = 'pkill -USR1 cava || true'
 
+[templates.firefox]
+input_path = '~/.config/matugen/templates/textfox.css'
+output_path = '/home/lucas/.config/mozilla/firefox/01tcjyrm.default-release/chrome/matugen-colors.css'
 
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi-theme.toml'
