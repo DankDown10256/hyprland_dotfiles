@@ -1,0 +1,128 @@
+/* ranger097 */
+
+// -*- mode: jsonc -*-
+{
+"layer": "top",
+"position": "right", // (top|bottom|left|right)
+//"height": 940,  
+"width": 10, 
+"spacing": 0,
+"margin-top" : 20,
+"margin-bottom": 20,
+"margin-left" : -14,
+"margin-right" : 20,
+
+"modules-left": [
+"hyprland/workspaces"
+],
+
+"modules-center": [
+//"custom/dna",
+//"custom/dna",
+"custom/code",
+"custom/ghostty",
+"custom/firefox",
+"custom/nix",
+"custom/steam",
+"custom/discord",
+"custom/hyprlock"
+//"custom/dna",
+//"custom/dna"
+],
+
+"modules-right": [ 
+"custom/music",      
+"battery",
+"clock",
+"custom/power"
+],
+
+"hyprland/workspaces": {
+"format": "{icon}",
+"format-icons": {
+"1": "一",
+"2": "二",
+"3": "三",
+"4": "四",
+"5": "五",
+"6": "六",
+"7": "七",
+"8": "八",
+"9": "九",
+"10": "十"
+},
+
+"persistent-workspaces": {
+"*": [ 1,2,3,4,5,6,7,8,9,10 ],
+"HDMI-A-1": [ 1,2,3,4,5,6,7,8,9 ]
+ }
+
+ },
+
+"clock": {
+"format": "{:%I\n%M\n%p}",
+"rotate":0,
+},
+"battery": {
+"states": {
+"warning": 30,
+"critical": 15
+},
+"format": "{icon}",
+"format-full": "{icon}",
+"format-charging": "{icon}",
+"format-plugged": "{icon}",
+"format-alt": "{icon}",
+"format-icons": ["󰁺", "󰁼", "󰁾", "󰂂", ""],
+"rotate":0,
+},
+
+"custom/power": {
+"format":"󰤆",
+"on-click": "wlogout"
+},
+
+"custom/code": {
+"format":"",
+"on-click": "code",
+
+},
+
+"custom/hyprlock": {
+"format":"",
+"on-click":"hyprlock"
+},
+
+"custom/ghostty": {
+"format": "",
+"on-click": "ghostty"
+},
+
+"custom/firefox": {
+"format": "",
+"on-click":"firefox"
+},
+
+"custom/discord": {
+"format": " ",
+"on-click": "discord"
+},
+
+"custom/steam": {
+"format": " ",
+"on-click": "steam"
+},
+
+"custom/nix": {
+"format": "",
+
+},
+"custom/dna": {
+"format": "󰚄",
+},
+
+"custom/music": {
+"format": "󱖏",
+"on-click": "VacuumTube",
+}
+}

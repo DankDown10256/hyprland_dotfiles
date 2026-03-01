@@ -22,7 +22,8 @@
     "network": {
         "format-wifi": " {essid}",
         "format-disconnected": "⚠",
-        "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "~/.config/rofi/wifimenu.sh"
     },
 
     "pulseaudio": {
@@ -31,6 +32,6 @@
         "format-icons": {
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "~/.config/rofi/audio.sh"
     }
 }
