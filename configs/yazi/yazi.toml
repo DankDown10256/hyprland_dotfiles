@@ -1,0 +1,33 @@
+[manager]
+sort_by        = "modified"
+sort_reverse   = true
+sort_dir_first = true
+show_hidden    = true
+mouse_events = [ "click", "scroll", "touch", "move", "drag" ]
+
+[plugin]
+prepend_previewers = [
+    # archives (zip, rar, 7z, tar)
+    { name = "*.tar.gz", run = "ouch" },
+    { name = "*.tar.xz", run = "ouch" },
+    { name = "*.zip",    run = "ouch" },
+    { name = "*.7z",     run = "ouch" },
+    { name = "*.rar",    run = "ouch" },
+    
+    # office
+    { name = "*.docx", run = "office" },
+    { name = "*.pptx", run = "office" },
+    { name = "*.xlsx", run = "office" },
+    
+    # pretty code and json
+    { name = "*.md",   run = "rich-preview" },
+    { name = "*.json", run = "rich-preview" },
+    { name = "*.csv",  run = "rich-preview" },
+    { name = "*.py",   run = "rich-preview" },
+    { name = "*.js",   run = "rich-preview" },
+    { name = "*.rs",   run = "rich-preview" },
+    { name = "*.go",   run = "rich-preview" },
+
+    # audio
+    { mime = "audio/*", run = "audio-preview" },
+]

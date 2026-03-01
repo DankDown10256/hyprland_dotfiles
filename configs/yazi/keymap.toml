@@ -1,0 +1,94 @@
+# --- Smart Filter ---
+[[mgr.prepend_keymap]]
+on   = [ "F" ]
+run  = "plugin smart-filter"
+desc = "Smart filter"
+
+# --- Jump to Char ---
+[[mgr.prepend_keymap]]
+on   = [ "J" ]
+run  = "plugin jump-to-char"
+desc = "Jump to char"
+
+# --- Lazygit ---
+[[mgr.prepend_keymap]]
+on   = [ "g", "l" ]
+run  = "plugin lazygit"
+desc = "Open Lazygit"
+
+# --- Compression ---
+[[mgr.prepend_keymap]]
+on   = [ "c", "a" ]
+run  = "plugin compress"
+desc = "Archive selected files"
+
+# --- Chmod ---
+[[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"
+
+# --- What Size ---
+[[mgr.prepend_keymap]]
+on   = [ "c", "s" ]
+run  = "plugin what-size"
+desc = "Calc size of selection"
+
+# --- YAMB (Bookmarks) ---
+[[mgr.prepend_keymap]]
+on   = [ "u", "a" ]
+run  = "plugin yamb -- save"
+desc = "Add bookmark"
+
+[[mgr.prepend_keymap]]
+on   = [ "b" ]
+run  = "plugin yamb -- jump_by_key"
+desc = "Jump bookmark by key"
+
+[[mgr.prepend_keymap]]
+on   = [ "u", "G" ]
+run  = "plugin yamb -- jump_by_fzf"
+desc = "Jump bookmark by fzf"
+
+[[mgr.prepend_keymap]]
+on   = [ "u", "d" ]
+run  = "plugin yamb -- delete_by_key"
+desc = "Delete bookmark by key"
+
+[[mgr.prepend_keymap]]
+on   = [ "u", "D" ]
+run  = "plugin yamb -- delete_by_fzf"
+desc = "Delete bookmark by fzf"
+
+[[mgr.prepend_keymap]]
+on   = [ "u", "A" ]
+run  = "plugin yamb -- delete_all"
+desc = "Delete all bookmarks"
+
+[[mgr.prepend_keymap]]
+on   = [ "u", "r" ]
+run  = "plugin yamb -- rename_by_key"
+desc = "Rename bookmark by key"
+
+[[mgr.prepend_keymap]]
+on   = [ "u", "R" ]
+run  = "plugin yamb -- rename_by_fzf"
+desc = "Rename bookmark by fzf"
+
+# --- ripdrag ---
+[[mgr.prepend_keymap]]
+on   = [ "<C-d>" ]
+run  = "plugin drag"
+desc = "Drag Files"
+
+# --- easyjump ---
+[[mgr.prepend_keymap]]
+on   = [ "i" ]
+run  = "plugin easyjump"
+desc = "easyjump"
+
+# --- select ---
+[[mgr.prepend_keymap]]
+on   = [ "<C-Space>" ]
+run  = "cd --interactive"
+desc = "Go to directory"
