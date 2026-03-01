@@ -1,90 +1,190 @@
+/*****----- Configuration -----*****/
 configuration {
-    modi:                       "drun,run";
+    modi:                       "drun,run,filebrowser,window";
     show-icons:                 true;
-    display-drun:               " ";
-    display-run:                " ";
+    display-drun:               "󰀻"; /* Icône Drun (Grid) */
+    display-run:                "󰆍"; /* Icône Run (Terminal) */
+    display-filebrowser:        "󰉋"; /* Icône Folder */
+    display-window:             "󱂬"; /* Icône Window */
     drun-display-format:        "{name}";
-    terminal: "kitty";
-    font:                       "JetBrainsMono Nerd Font 10";
+    window-format:              "{w} · {c} · {t}";
+    
+    /* Définition de la Nerd Font ici */
+    font:                       "JetBrainsMono Nerd Font 11";
 }
 
-/* Import des couleurs Matugen (pour @background et @selected) */
-@theme "colors.rasi"
+/*****----- Global Properties -----*****/
+@theme "~/.config/rofi/colors.rasi"
 
 * {
-    /* On force le blanc pour tous les textes ici */
-    foreground:                  #ffffff; 
+    /* --- Mapping Matugen --- */
+    background-colour:           @background;
+    foreground-colour:           @foreground;
+    border-colour:               @selected;
+    handle-colour:               @selected;
+    
+    alternate-background:        @background-alt;
+    
+    /* --- États Standards --- */
+    normal-background:           transparent;
+    normal-foreground:           @foreground-colour;
+    
+    selected-normal-background:  @selected;
+    selected-normal-foreground:  @background;
+
+    /* --- États Actifs (Secondary) --- */
+    active-background:           transparent;
+    active-foreground:           @active;
+    selected-active-background:  @active;
+    selected-active-foreground:  @background;
+
+    /* --- États Urgents (Error) --- */
+    urgent-background:           transparent;
+    urgent-foreground:           @urgent;
+    selected-urgent-background:  @urgent;
+    selected-urgent-foreground:  @background;
+
+    /* --- Éléments Alternés --- */
+    alternate-normal-background: transparent;
+    alternate-normal-foreground: @foreground-colour;
+    alternate-active-background: transparent;
+    alternate-active-foreground: @active;
+    alternate-urgent-background: transparent;
+    alternate-urgent-foreground: @urgent;
 }
 
+/*****----- Main Window -----*****/
 window {
-    width:                        450px;
-    enabled:                      true;
-    border:                       2px;
-    border-radius:                12px;
-    border-color:                 @selected;
-    background-color:             @background;
-    cursor:                       "default";
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       500px;
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      2px solid;
+    border-radius:               20px;
+    border-color:                @border-colour;
+    cursor:                      "default";
+    background-color:            @background-colour;
 }
 
+/*****----- Main Box -----*****/
 mainbox {
-    spacing:                     0px;
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     25px;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
+    children:                    [ "inputbar", "mode-switcher", "message", "listview" ];
 }
 
+/*****----- Inputbar -----*****/
 inputbar {
+    enabled:                     true;
     spacing:                     10px;
-    padding:                     15px;
+    margin:                      0px 0px 10px 0px;
     background-color:            transparent;
-    children:                    [ "prompt", "entry" ];
+    text-color:                  @foreground-colour;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    padding:                     5px 0px;
+    expand:                      false;
+    str:                         ""; /* Icône de recherche */
+    font:                        "JetBrainsMono Nerd Font 13";
+    background-color:            inherit;
+    text-color:                  inherit;
 }
 
 entry {
+    enabled:                     true;
+    padding:                     5px 0px;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
     placeholder:                 "Search...";
-    placeholder-color:           #ffffffcc; /* Blanc légèrement transparent */
-    background-color:            transparent;
-    text-color:                  #ffffff;
+    placeholder-color:           inherit;
 }
 
-prompt {
-    background-color:            transparent;
-    text-color:                  #ffffff;
-}
-
+/*****----- Listview -----*****/
 listview {
+    enabled:                     true;
     columns:                     1;
     lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
     fixed-height:                true;
+    fixed-columns:               true;
     spacing:                     5px;
-    padding:                     10px;
     background-color:            transparent;
+    text-color:                  @foreground-colour;
 }
 
+/*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     10px;
-    padding:                     10px;
-    border-radius:               8px;
+    spacing:                     15px;
+    padding:                     8px 12px;
+    border-radius:               12px;
     background-color:            transparent;
-    text-color:                  #ffffff; /* Texte blanc par défaut */
+    text-color:                  @foreground-colour;
     cursor:                      pointer;
 }
 
-element selected {
-    background-color:            @selected;
-    /* Option 1: Texte noir pour le contraste sur la couleur Matugen */
-    text-color:                  @background; 
-    /* Option 2: Si tu veux VRAIMENT du blanc même ici, décommente la ligne dessous : */
-    /* text-color:               #ffffff; */
+element selected.normal {
+    background-color:            @selected-normal-background;
+    text-color:                  @selected-normal-foreground;
 }
 
 element-icon {
-    size:                        24px;
     background-color:            transparent;
+    text-color:                  inherit;
+    size:                        28px; /* Taille des icônes d'apps */
+    cursor:                      inherit;
 }
 
 element-text {
     background-color:            transparent;
-    text-color:                  inherit; /* Hérite du blanc ou de la sélection */
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    cursor:                      inherit;
+}
+
+/*****----- Mode Switcher -----*****/
+mode-switcher{
+    enabled:                     true;
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+}
+
+button {
+    padding:                     10px;
+    border-radius:               12px;
+    background-color:            @alternate-background;
+    text-color:                  inherit;
+    cursor:                      pointer;
+    /* On peut forcer une police plus grande pour les icônes de mode */
+    font:                        "JetBrainsMono Nerd Font 14";
+}
+
+button selected {
+    background-color:            @selected-normal-background;
+    text-color:                  @selected-normal-foreground;
+}
+
+/*****----- Message / Textbox -----*****/
+textbox {
+    padding:                     12px;
+    border-radius:               12px;
+    background-color:            @alternate-background;
+    text-color:                  @foreground-colour;
     vertical-align:              0.5;
 }

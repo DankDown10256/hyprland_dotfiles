@@ -1,0 +1,165 @@
+{
+  "layer": "top",
+  "margin": "15 5 0 5",
+  "position": "top",
+  "height": 42,
+  "spacing": 2,  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+  "modules-left": ["custom/menu", "hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["mpris"],
+  "modules-right": [
+    "tray",
+    "hyprland/language",
+    "battery",
+    "network",
+    "pulseaudio",
+    "clock",
+    "custom/notification",
+    "custom/powermenu"
+  ],
+  "custom/spotify": {
+      "format": " {}",
+      "return-type": "json",
+      "on-click": "playerctl -p spotify play-pause",
+      "on-click-right": "playerctl -p spotify next",
+      "exec": "playerctl -p spotify metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"class\": \"{{status}}\"}' --follow",
+      "max-length": 40
+  },
+  "mpris": {
+      "format": " {dynamic}",
+      "format-paused": " <i>{dynamic}</i>",
+      "player": "spotify",
+      "dynamic-order": ["artist", "title"]
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false
+  },
+  "hyprland/window": {
+    "format": "{class}",
+    "rewrite": {
+        "librewolf": " librewolf",
+        "firefox": " firefox",
+        "kitty": " kitty",
+        "spotify": " spotify",
+        "code": "󰨞 code",
+        "com.ayugram.desktop": " telegram",   
+        "discord": " discord",
+        "steam": " steam"
+        },
+    },
+    "custom/menu": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "$HOME/.config/rofi/launcher/launcher.sh"
+    },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10
+  },
+  "clock": {
+    "format": " {:%H:%M}",
+    "format-alt": " {:L%a %d %b}",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": true,
+    "interval": 1
+  },
+  "memory": {
+    "format": " {used:0.1f}Gi"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "  muted",
+    "format-icons": {
+      "headphone": "",
+      "default": [" ", " ", " "]
+    },
+    "on-click": "control --volume",
+    "max-volume": 150
+  },
+    "network": {
+        "format": "",
+        "on-click": "control --wifi",
+        "format-ethernet": "\udb83\udc9d {ifname}",
+        "format-wifi": "{icon} {essid}",
+        "format-disconnected": "\udb83\udc9c disconnected",
+        "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "disconnected"
+    },
+
+    "bluetooth": {
+        "format": "\udb80\udcaf",
+        "on-click": "control --bluetooth",
+        "format-disabled": "\udb80\udcb2",
+        "format-connected": "\udb80\udcb1",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
+    "hyprland/language": {
+        "format": " {} ",
+        "format-en": "us",
+        "format-ua": "ua",
+        "format-ru": "ru"
+    },
+
+    "battery": {
+        "bat": "BAT1",
+        "interval": 60,
+        "states": {
+		"warning": 30,
+		"critical": 15
+	},
+	"events": {
+		"on-discharging-warning": "notify-send -u normal 'low battery' 'you have less then 30% battery left'",
+		"on-discharging-critical": "notify-send -u critical 'very low battery' 'you have less then 15% battery left'"
+	},
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} ",
+        "tooltip-format": "time left: {time}",
+        "on-click": "control --battery",
+        "format-icons": {
+        "default": ["", "", "", "", ""]
+    }
+    },
+
+  "custom/sep": {
+    "format": "|",
+    "tooltip": false
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell &",
+    "format": "⏻"
+  },
+  "custom/powermenu": {
+    "format": " \uf011  ",
+    "tooltip": false,
+    "on-click": "$HOME/.config/rofi/powermenu/powermenu.sh"
+  },
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "󰅺",
+      "notification": "󰡟"
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "return-type": "json",
+    "tooltip": false
+  },
+},
+
