@@ -4,7 +4,6 @@ default_prefix = "@"
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty.conf'
 output_path = '~/.config/kitty/colors.conf'
-post_hook = "kitty +kitten themes --reload-in=all matugen"
 
 [templates.rofi]
 input_path = '~/.config/matugen/templates/rofi.rasi'
