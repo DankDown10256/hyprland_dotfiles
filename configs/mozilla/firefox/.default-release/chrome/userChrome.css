@@ -24,6 +24,8 @@
 * {
   font-family: var(--tf-font-family);
   font-size: var(--tf-font-size);
+  /* Arrondit globalement les éléments interactifs */
+  border-radius: 12px !important; 
 }
 
 body {
@@ -32,4 +34,35 @@ body {
 
 ::placeholder {
   text-transform: var(--tf-text-transform);
+}
+
+/* --- AJOUTS POUR LE LOOK ARRONDI (ROUNDED CORNERS) --- */
+
+/* La barre d'adresse (URL Bar) */
+#urlbar-input-container, 
+#urlbar-background {
+  border-radius: 20px !important;
+}
+
+/* Les onglets (Tabs) */
+.tab-background {
+  border-radius: 12px 12px 0 0 !important; /* Arrondi seulement en haut pour les onglets */
+  margin-block: 2px !important;
+}
+
+/* Les boutons de la barre d'outils */
+toolbarbutton {
+  border-radius: 10px !important;
+}
+
+/* Menus contextuels et popups */
+menupopup, panel {
+  --panel-border-radius: 16px !important;
+  --arrowpanel-border-radius: 16px !important;
+}
+
+/* Barre de recherche (Findbar) */
+findbar {
+  border-radius: 15px 15px 0 0 !important;
+  border-top: 1px solid var(--tf-bg) !important;
 }
