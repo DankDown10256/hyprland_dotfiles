@@ -1,0 +1,77 @@
+{
+    "workbench.colorCustomizations": {
+        "editor.background": "#111318",
+        "sideBar.background": "#111318",
+        "sideBar.border": "#111318",
+        "activityBar.background": "#111318",
+        "activityBar.border": "#111318",
+        "editorGroupHeader.tabsBackground": "#111318",
+        "editorGroupHeader.tabsBorder": "#111318",
+        "tab.activeBackground": "#111318",
+        "tab.activeBorder": "#adc6ff",
+        "tab.inactiveBackground": "#111318",
+        "editorLineNumber.foreground": "#282a2f",
+        "editorLineNumber.activeForeground": "#adc6ff",
+        "editorCursor.foreground": "#adc6ff",
+        "editor.selectionBackground": "#2b467866"
+    },
+
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                // Balises HTML (p, div, html, doctype)
+                "scope": [
+                    "entity.name.tag",
+                    "meta.tag.sgml.doctype.html",
+                    "punctuation.definition.tag"
+                ],
+                "settings": {
+                    "foreground": "#adc6ff",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                // Attributs HTML (class, id, src)
+                "scope": "entity.other.attribute-name",
+                "settings": {
+                    "foreground": "#bfc6dc"
+                }
+            },
+            {
+                // Texte à l'intérieur des balises
+                "scope": "text.html.derivative",
+                "settings": {
+                    "foreground": "#e2e2e9"
+                }
+            },
+            {
+                // Commentaires
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#8e9099",
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
+
+    // --- Ton interface Minimaliste ---
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": false,
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.glyphMargin": false,
+    "editor.folding": false,
+    "breadcrumbs.enabled": false,
+    "workbench.editor.showTabs": "single",
+    "window.menuBarVisibility": "toggle",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "editor.lineNumbers": "on",
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.padding.top": 25,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.productIconTheme": "material-product-icons"
+}
