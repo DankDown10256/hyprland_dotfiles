@@ -2,6 +2,6 @@
 ncspot/userstate.cbor
 quickshell/app_usage.json
 quickshell/state/
-
+./home/walls/
 # Si tu as des secrets dans tes scripts
 *.secret
