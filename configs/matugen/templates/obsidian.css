@@ -1,0 +1,13 @@
+:root {
+    /* Variables générées par Matugen */
+    --md-sys-color-background: {{colors.surface.default.hex}};
+    --md-sys-color-on-background: {{colors.on_surface.default.hex}};
+    --md-sys-color-primary: {{colors.primary.default.hex}};
+    
+    /* Le pont avec Obsidian */
+    --background-primary: var(--md-sys-color-background);
+    --background-primary-alt: var(--md-sys-color-background);
+    --text-normal: var(--md-sys-color-on-background);
+    --interactive-accent: var(--md-sys-color-primary);
+    --titlebar-background: var(--md-sys-color-background);
+}

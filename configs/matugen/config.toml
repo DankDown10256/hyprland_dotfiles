@@ -47,3 +47,16 @@ output_path = '~/.config/hypr/hyprlock-colors.conf'
 [templates.vscodium]
 input_path = "~/.config/matugen/templates/vscodium.json"
 output_path = "~/.config/VSCodium/User/settings.json"
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.obsidian]
+input_path = "~/.config/matugen/templates/obsidian.css"
+output_path = "/home/lucas/Obsidian Vault/.obsidian/snippets/matugen-colors.css"
