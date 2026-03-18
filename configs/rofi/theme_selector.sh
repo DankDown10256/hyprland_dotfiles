@@ -7,7 +7,7 @@ case "$choix" in
     "󱄄 Gruvbox")  FOLDER="gruvbox" ;;
     "󰈊 Other")     FOLDER="other" ;;
     "Akane")       FOLDER="akane" ;;
-    "E-Ink")       FOLDER="eink" ;;
+    "E-Ink")       FOLDER="e-ink" ;;
     "Everforest")  FOLDER="everforest" ;;
     "Miasma")      FOLDER="miasma" ;;
     "Anime")       FOLDER="anime" ;;
@@ -37,7 +37,13 @@ mkdir -p "$TARGET_DIR"
 
 swww img "$first_wall" --transition-type center --transition-step 90
 cp "$first_wall" "$TARGET_DIR/background.jpg"
-matugen image "$TARGET_DIR/background.jpg"
+
+# Matugen selon le thème
+if [[ "$FOLDER" == "anime" || "$FOLDER" == "e-ink" ]]; then
+    matugen image "$TARGET_DIR/background.jpg" -t scheme-monochrome
+else
+    matugen image "$TARGET_DIR/background.jpg"
+fi
 
 pkill -USR2 waybar
 pkill -USR2 swaync

@@ -1,0 +1,148 @@
+@import "colors.rasi"
+
+/*****----- Global Properties -----*****/
+* {
+    background-colour:           @background;
+    foreground-colour:           @foreground;
+    border-colour:               @selected;
+    alternate-background:        @background-alt;
+
+    selected-normal-background:  @selected;
+    selected-normal-foreground:  @background;
+
+    urgent-foreground:           @urgent;
+    selected-urgent-background:  @urgent;
+    selected-urgent-foreground:  @background;
+
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+
+    font:                        "JetBrainsMono Nerd Font 11";
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       900px;
+    height:                      520px;
+    border:                      2px solid;
+    border-radius:               20px;
+    border-color:                @border-colour;
+    background-color:            @background-colour;
+    cursor:                      "default";
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    orientation:                 horizontal;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    background-color:            transparent;
+    children:                    [ "listbox", "preview" ];
+}
+
+/*****----- Colonne gauche -----*****/
+listbox {
+    orientation:                 vertical;
+    width:                       340px;
+    spacing:                     0px;
+    padding:                     25px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px 0px 10px 0px;
+    padding:                     8px 12px;
+    border-radius:               12px;
+    background-color:            @alternate-background;
+    text-color:                  @foreground-colour;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    padding:                     0px 8px 0px 0px;
+    background-color:            transparent;
+    text-color:                  @border-colour;
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Rechercher...";
+    placeholder-color:           @foreground-colour;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     5px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     8px 12px;
+    border-radius:               12px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    cursor:                      pointer;
+}
+
+element selected.normal {
+    background-color:            @selected-normal-background;
+    text-color:                  @selected-normal-foreground;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        36px;
+    border-radius:               6px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    cursor:                      inherit;
+}
+
+/*****----- Colonne droite : preview -----*****/
+preview {
+    orientation:                 vertical;
+    expand:                      true;
+    padding:                     12px;
+    background-color:            @alternate-background;
+    border-radius:               0px 18px 18px 0px;
+    children:                    [ "icon-current-entry" ];
+}
+
+icon-current-entry {
+    expand:                      true;
+    size:                        420px;
+    border-radius:               12px;
+    background-color:            transparent;
+}

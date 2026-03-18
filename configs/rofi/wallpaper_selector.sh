@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Si un argument est passé (appelé depuis theme_selector), on l'utilise
-# Sinon on lit le thème sauvegardé
 if [[ -n "$1" ]]; then
     THEME_CHOISI="$1"
 else
@@ -23,14 +21,22 @@ fi
 
 mkdir -p "$TARGET_DIR"
 
-selected_wall=$(find "$WALL_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -printf "%f\0icon\x1f%p\n" | rofi -dmenu -i -p "󰸉 Thème : $THEME_CHOISI" -show-icons)
+selected_wall=$(find "$WALL_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | while read -r f; do
+    printf '%s\0icon\x1f%s\n' "$(basename "$f")" "$f"
+done | rofi -dmenu -i -p "󰸉 Thème : $THEME_CHOISI" -theme "$HOME/.config/rofi/wallpaper_selector_theme.rasi" -show-icons)
 
 if [[ -n "$selected_wall" ]]; then
     FULL_PATH="$WALL_DIR/$selected_wall"
 
     swww img "$FULL_PATH" --transition-type center --transition-step 90
     cp "$FULL_PATH" "$TARGET_DIR/$TARGET_NAME"
-    matugen image "$TARGET_DIR/$TARGET_NAME"
+
+    # Matugen selon le thème
+    if [[ "$THEME_CHOISI" == "anime" || "$THEME_CHOISI" == "eink" ]]; then
+        matugen image "$TARGET_DIR/$TARGET_NAME" -t scheme-monochrome
+    else
+        matugen image "$TARGET_DIR/$TARGET_NAME"
+    fi
 
     pkill -USR2 waybar
     pkill -USR2 swaync
