@@ -1,11 +1,11 @@
 #!/bin/bash
-THEME_STR="window { width: 20%; } listview { lines: 13; }"
+THEME_STR="window { width: 20%; } listview { lines: 8; }"
 options="󱄄 Gruvbox\n󰈊 Other\nAkane\nE-Ink\nEverforest\nMiasma\nAnime\nWallhaven\nArch Riot\nCpUnk\nCyberpunk\nDelorean\nOsaka Jade"
 choix=$(echo -e "$options" | rofi -dmenu -i -p "󱥚 Style :" -theme-str "$THEME_STR")
 
 case "$choix" in
     "󱄄 Gruvbox")  FOLDER="gruvbox" ;;
-    "󰈊 Other")     FOLDER="other" ;;
+    "󰈊 Other")     FOLDER="" ;;
     "Akane")       FOLDER="akane" ;;
     "E-Ink")       FOLDER="e-ink" ;;
     "Everforest")  FOLDER="everforest" ;;
