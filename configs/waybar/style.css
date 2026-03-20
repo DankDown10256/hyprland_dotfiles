@@ -1,154 +1,124 @@
 @import "colors.css";
 
 * {
+  border: none;
+  border-radius: 0;
+  font-family: 'JetBrainsMono Nerd Font', monospace;
+  font-size: 13px;
+  min-height: 0;
   padding: 0;
   margin: 0;
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 12px;
-}
-
-/* ------ Set a Uniform Border Radius ------ */
-.modules-left, .modules-center, .modules-right, #cpu, #memory, #temperature, #wireplumber, #backlight, #custom-spotify, #custom-icon, #custom-updates, #language, #network, #battery, #battery#bat1, #tray, #idle_inhibitor, #custom-power, #custom-notification {
-  border-radius: 18px;
-}
-
-/* ------ Modules Left ------ */
-.modules-left {
-  background-color: @base;
-  padding-right: 5px;
-  padding-left: 13px;
-}
-
-/* ------ Modules Center ------ */
-.modules-center {
-  background-color: @base;
-  padding-right: 5px;
-  padding-left: 5px;
-}
-
-/* ------ Modules Right ------ */
-.modules-right {
-  background-color: @base;
-  padding-right: 5px;
-  padding-left: 5px;
-}
-
-/* ------ Window Title ------ */
-#window { 
-  color: @text; 
-  padding-right: 4px;
 }
 
 window#waybar {
-  background-color: rgba(0, 0, 0, 0);
   background: transparent;
-  transition-property: background-color;
-  transition-duration: .5s;
+  border: none;
+  box-shadow: none;
 }
 
-/* ------ Workspaces ------ */
-#workspaces button.empty {
-  color: @surface2;
+.modules-center {
+  background: alpha(@surface1, 0.88);
+  border-radius: 999px;
+  border: 1px solid alpha(@text, 0.07);
+  box-shadow: 0 2px 18px alpha(@base, 0.8);
+  padding: 0 10px;
 }
 
-#workspaces {
-  margin: 0px 1px 0px 1px;
-  padding: 0px 1px;
-}
-
-#workspaces button {
-  padding: 0px 2px;
-  margin: 4px 2px;
-  color: @yellow;
-}
-
-#workspaces button:hover {
-  opacity: 0.5;
-}
-
-/* ------ Modules Individuels ------ */
-#wireplumber {
-  color: @peach;
-  background-color: @surface1;
-  padding: 2px 8px;
-  margin: 4px 2px;
-}
-
-#backlight {
-  color: @sky;
-  background-color: @surface1;
-  padding: 2px 8px;
-  margin: 4px 2px;
-}
-
-#language {
-  color: @teal;
-  background-color: @surface1;
-  padding: 2px 8px;
-  margin: 4px 2px;
-}
-
-#network {
-  color: @sapphire;
-  background-color: @surface1;
-  padding: 2px 8px;
-  margin: 4px 2px;
-}
-
+#clock,
+#workspaces,
+#mpris,
+#pulseaudio,
+#network,
 #battery {
-  color: @teal;
-  background-color: @surface1;
-  padding: 2px 5px;
-  margin: 4px 2px;
+  background: transparent;
+  color: @text;
 }
 
 #clock {
-  padding: 0 10px;
-  color: @text;
-  font-weight: bold;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  padding: 0 14px 0 10px;
 }
 
-#tray {
-  background-color: @surface1;
-  padding: 2px 5px;
-  margin: 4px 2px;
+#workspaces {
+  padding: 0 4px;
 }
 
-#custom-icon {
-  font-size: 18px;
-  color: @teal;
-  padding-right: 5px;
-}
-
-#custom-power {
-  color: @teal;
-  background-color: @surface1;
-  padding: 2px 9px;
-  padding-right: 10px;
-  margin: 4px 2px;
-  font-size: 15px;
-}
-
-#custom-notifications {
-  color: @yellow;
-  background-color: @surface1;
-  padding: 2px 9px;
-  padding-right: 11px;
-  margin: 4px 2px;
-  font-size: 15px;
+#workspaces button {
+  background: transparent;
+  color: alpha(@text, 0.35);
   border-radius: 50px;
+  min-width: 28px;
+  min-height: 22px;
+  padding: 0 6px;
+  margin: 7px 2px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.15s ease;
 }
 
-#idle_inhibitor {
-  color: @green;
-  background-color: @surface1;
-  padding: 2px 9px;
-  margin: 5px 2px;
+#workspaces button:hover {
+  background: alpha(@text, 0.08);
+  color: @text;
+  box-shadow: none;
+}
+
+#workspaces button.active {
+  background: linear-gradient(135deg, @teal, @yellow);
+  color: @base;
+  border-radius: 8px;
+  box-shadow: 0 0 10px alpha(@teal, 0.4);
+}
+
+#workspaces button.occupied {
+  color: @text;
+}
+
+#workspaces button.urgent {
+  background: alpha(@peach, 0.2);
+  color: @peach;
+}
+
+#mpris {
+  font-size: 12px;
+  color: alpha(@text, 0.75);
+  padding: 0 14px 0 4px;
+}
+
+#mpris.paused {
+  color: alpha(@text, 0.35);
+}
+
+#pulseaudio,
+#network,
+#battery {
   font-size: 15px;
+  padding: 0 9px;
 }
 
-tooltip {
-  background: @base;
-  border: 1px solid @blue;
+#pulseaudio.muted,
+#network.disconnected {
+  color: alpha(@text, 0.25);
+}
+
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.critical {
+  color: @peach;
+  animation: blink 1s linear infinite;
+}
+
+#battery.charging {
+  color: @teal;
+}
+
+#battery {
+  padding-right: 10px;
+}
+
+@keyframes blink {
+  to { opacity: 0.3; }
 }
