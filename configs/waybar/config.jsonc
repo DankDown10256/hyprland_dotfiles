@@ -3,6 +3,7 @@
   "position": "top",
   "height": 36,
   "margin-top": 6,
+  "exclusive": true,
 
   "modules-left": [],
   "modules-center": ["clock","mpris","hyprland/workspaces", "pulseaudio", "network", "battery"],
