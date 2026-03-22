@@ -27,6 +27,6 @@ selected_pp=$(list_apps | rofi -dmenu -i -p "󰇄 Choisir PP :" -show-icons -the
 # 3. Action si une image est choisie
 if [[ -n "$selected_pp" ]]; then
     FULL_PATH="$PP_DIR/$selected_pp"
-    cp "$FULL_PATH" "$TARGET_DIR/$TARGET_FILE"
+    cp "$FULL_PATH" "$TARGET_DIR/$TARGET_FILE" 
     notify-send "Avatar mis à jour" "Nouvelle PP : $selected_pp" -i "$TARGET_FILE"
 fi
