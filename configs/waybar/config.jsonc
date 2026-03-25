@@ -6,7 +6,7 @@
   "exclusive": true,
 
   "modules-left": [],
-  "modules-center": ["clock","mpris","hyprland/workspaces", "pulseaudio", "network", "battery"],
+  "modules-center": ["clock","mpris","hyprland/workspaces","custom/claude", "pulseaudio", "network", "battery"],
   "modules-right": [],
 
   "hyprland/workspaces": {
@@ -66,5 +66,12 @@
     "warning": 30,
     "critical": 15
   }
+},
+"custom/claude": {
+  "exec": "python ~/.config/waybar/scripts/claude-usage.py",
+  "return-type": "json",
+  "format": "{}",
+  "interval": 300,
+  "tooltip": true
 }
 }
