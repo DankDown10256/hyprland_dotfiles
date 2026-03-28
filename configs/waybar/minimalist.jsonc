@@ -1,15 +1,14 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 30,
-  "margin-top": 6,
-  "exclusive": true,
+ "layer": "top",
+ "position": "top",
+ "height": 30,
+ "margin-top": 0,
 
-  "modules-left": [],
-  "modules-center": ["clock","hyprland/workspaces","custom/claude", "pulseaudio", "network", "battery"],
-  "modules-right": [],
+ "modules-left": ["custom/launcher","hyprland/workspaces"],
+ "modules-center": ["clock"],
+ "modules-right": ["custom/claude", "pulseaudio", "network", "battery"],
 
-  "hyprland/workspaces": {
+ "hyprland/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
     "sort-by-number": true,
