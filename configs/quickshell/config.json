@@ -1,0 +1,8 @@
+{
+  "name": "quickshell-music",
+  "version": "1.0",
+  "entrypoint": "shell.qml",
+  "dependencies": {
+    "qt.mpris": true
+  }
+}
