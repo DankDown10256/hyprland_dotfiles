@@ -1,111 +1,125 @@
 configuration {
-    modi:                "drun";
-    show-icons:          true;
-    icon-theme:          "Slot-Beauty-Dark-Icons";
-    drun-display-format: "{name}";
-    display-drun:        "";
-    font:                "JetBrains Mono 14";
-    terminal:            "kitty";
+    modi:                       "drun,run,window";
+    show-icons:                 true;
+    display-drun:               "";
+    display-run:                "";
+    display-window:             "";
+    drun-display-format:        "{name}";
+    font:                        "JetBrainsMono Nerd Font 10";
 }
 
-@theme "~/.config/rofi/colors.rasi"
+@import "~/.config/rofi/colors.rasi"
 
 * {
-    /* theme-changer: begin */
-    bg:      @background;
-    bg-sel:  @background-alt;
-    fg:      @foreground;
-    fg-dim:  @selected;
-    accent:  @urgent;
-
     background-color: transparent;
-    text-color:       @fg;
-    border-color:     @border-color;
-    spacing:          0;
-    padding:          0;
-    margin:           0;
-    /* theme-changer: end */
+    text-color:       @foreground;
 }
 
+/* Fenêtre centrée et épurée */
 window {
-    background-color: @bg;
+    width:            600px;
+    height:           400px;
     border:           1px;
-    border-radius:    16px;
-    width:            620px;
-    location:         center;
-    anchor:           center;
-    y-offset:         -100px;
+    border-color:     @background-alt; /* Bordure très discrète */
+    border-radius:    10px;
+    background-color: @background;
+    padding:          20px;
 }
 
 mainbox {
-    background-color: transparent;
-    children:         [inputbar, listview];
-    padding:          0;
-    spacing:          0;
+    orientation:      vertical;
+    children:         [ "inputbar", "listview" ];
+    spacing:          15px;
+    background-color: @background;
 }
 
+/* Barre de recherche minimaliste */
 inputbar {
-    background-color: transparent;
-    border:           0 0 1px 0;
-    border-color:     #3a3a3c;
-    padding:          16px 18px;
     spacing:          10px;
-    children:         [entry];
+    padding:          5px;
+    children:         [ "prompt", "entry" ];
+    border:           0px 0px 1px 0px; 
+    border-color:     @background-alt;
+    background-color: @background;
+}
+
+prompt {
+    text-color:       @selected;
+    background-color: transparent;
 }
 
 entry {
-    background-color:  transparent;
-    text-color:        @fg;
-    placeholder:       "Rechercher des applications";
-    placeholder-color: @fg-dim;
-    vertical-align:    0.5;
-    font:              "JetBrains Mono 15";
-    cursor:            text;
+    placeholder:      "Rechercher...";
+    placeholder-color: #5c6364;
+    text-color:       @foreground;
+    background-color: transparent;
 }
 
+/* Liste des applications très aérée */
 listview {
-    background-color: transparent;
-    lines:            7;
     columns:          1;
-    spacing:          0;
-    scrollbar:        false;
-    padding:          6px 0;
-    fixed-height:     false;
+    lines:            6;
+    cycle:            true;
+    dynamic:          true;
+    layout:           vertical;
+    spacing:          5px;
+    background-color: transparent;
 }
 
+/* Style de base des lignes */
 element {
-    background-color: transparent;
-    padding:          10px 16px;
+    padding:          8px 12px;
+    border-radius:    6px;
     spacing:          12px;
-    children:         [element-icon, element-text];
-    cursor:           pointer;
 }
 
-element-icon {
+/* --- LE FIX POUR LE FOND BEIGE --- */
+/* On force le fond transparent sur TOUS les éléments non sélectionnés */
+
+element normal.normal, 
+element alternate.normal {
     background-color: transparent;
-    size:             26px;
-    vertical-align:   0.5;
+    text-color:       @foreground;
+}
+
+element normal.active, 
+element alternate.active {
+    background-color: transparent;
+    text-color:       @active;
+}
+
+element normal.urgent, 
+element alternate.urgent {
+    background-color: transparent;
+    text-color:       @urgent;
+}
+
+/* --- STYLE DE L'ÉLÉMENT SÉLECTIONNÉ --- */
+/* Le curseur colore le texte en cyan sur un fond gris très discret */
+
+element selected.normal {
+    background-color: @background-alt;
+    text-color:       @selected;
+}
+
+element selected.active {
+    background-color: @background-alt;
+    text-color:       @selected;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color:       @background;
+}
+
+/* Gestion des icônes et du texte */
+element-icon {
+    size:             22px;
+    background-color: transparent;
 }
 
 element-text {
-    background-color: transparent;
-    text-color:       @fg;
     vertical-align:   0.5;
-}
-
-element.normal.normal    { background-color: transparent; }
-element.normal.active    { background-color: transparent; }
-element.normal.urgent    { background-color: transparent; }
-element.alternate.normal { background-color: transparent; }
-element.alternate.active { background-color: transparent; }
-element.alternate.urgent { background-color: transparent; }
-
-element.selected.normal {
-    background-color: @bg-sel;
-    border-radius:    8px;
-}
-
-element.selected.normal element-text {
-    text-color: @fg;
-    font:       "JetBrains Mono Bold 14";
+    text-color:       inherit; /* Très important pour que le texte change de couleur au survol */
+    background-color: transparent;
 }

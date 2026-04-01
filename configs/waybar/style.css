@@ -24,16 +24,41 @@ window#waybar {
   padding: 0 10px;
 }
 
+.modules-left {
+  padding: 10px;
+  margin-left: 10px;
+  background: alpha(@surface1, 0.88);
+  border-radius: 999px;
+  border: 1px solid alpha(@text, 0.07);
+  box-shadow: 0 2px 18px alpha(@base, 0.8);
+  padding: 0 10px;
+}
+
+.modules-right {
+  background: alpha(@surface1, 0.88);
+  margin-right: 10px;
+  border-radius: 999px;
+  border: 1px solid alpha(@text, 0.07);
+  box-shadow: 0 2px 18px alpha(@base, 0.8);
+  padding: 0 10px;
+}
+
 #clock,
 #workspaces,
-#mpris,
 #pulseaudio,
 #network,
 #battery {
   background: transparent;
   color: @text;
 }
-
+#tray{
+  color: #ffffff;
+}
+#mpris{
+  background: transparent;
+  color: @text;
+  margin-left: 50px;
+}
 #clock {
   font-weight: 600;
   font-size: 14px;

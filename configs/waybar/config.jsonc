@@ -5,9 +5,9 @@
   "margin-top": 6,
   "exclusive": true,
 
-  "modules-left": [],
-  "modules-center": ["clock","hyprland/workspaces","custom/claude", "pulseaudio", "network", "battery"],
-  "modules-right": [],
+  "modules-left": ["custom/tray", "mpris"],
+  "modules-center": ["clock","hyprland/workspaces", "custom/claude"],
+  "modules-right": ["pulseaudio", "network", "battery"],
 
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -23,6 +23,10 @@
     "persistent-workspaces": {
       "*": [1,2,3,4,5]
     }
+  },
+  "custom/tray": {
+      "format": "󰣇",
+      "on-click": "rofi -show drun"
   },
   "mpris": {
   "format": "{player_icon} {artist} – {title}",
