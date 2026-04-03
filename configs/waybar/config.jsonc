@@ -1,81 +1,98 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 30,
-  "margin-top": 6,
-  "exclusive": true,
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 0,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 0,
+    "exclusive": true,
 
-  "modules-left": ["custom/tray", "mpris"],
-  "modules-center": ["clock","hyprland/workspaces", "custom/claude"],
-  "modules-right": ["pulseaudio", "network", "battery"],
+    "modules-left": [
+        "custom/arch",
+        "temperature"
+    ],
 
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "sort-by-number": true,
-    "format-icons": {
-      "1": ">_",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": ""
+    "modules-center": [
+        "clock",
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "battery",
+        "custom/notifications"
+    ],
+
+    "custom/arch": {
+        "format": "󰣇",
+        "tooltip": false
     },
-    "persistent-workspaces": {
-      "*": [1,2,3,4,5]
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C",
+        "format-critical": " {temperatureC}°C",
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%A, %B %d, %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": ">_",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": ""
+        },
+        "on-click": "activate",
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+
+    "pulseaudio": {
+        "format": " {volume}%",
+        "format-muted": " muted",
+        "on-click": "pavucontrol",
+        "tooltip": false,
+        "scroll-step": 5
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰖪 Off",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": " {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-full": " {capacity}%",
+        "tooltip": false
+    },
+
+    "custom/notifications": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "swaync-client -t -sw"
     }
-  },
-  "custom/tray": {
-      "format": "󰣇",
-      "on-click": "rofi -show drun"
-  },
-  "mpris": {
-  "format": "{player_icon} {artist} – {title}",
-  "format-paused": "{player_icon} {artist} – {title}",
-  "player-icons": {
-    "default": "▶",
-    "spotify": "",
-    "firefox": "󰈹"
-  },
-  "status-icons": {
-    "paused": "⏸"
-  },
-  "max-length": 40,
-  "interval": 2
-  },
-  "pulseaudio": {
-  "format": "{icon}",
-  "format-muted": "󰝟",
-  "format-icons": {
-    "default": ["󰕿", "󰖀", "󰕾"]
-  },
-  "tooltip-format": "{volume}%",
-  "on-click": "pavucontrol"
-},
-
-"network": {
-  "format-wifi": "󰤨",
-  "format-ethernet": "󰈀",
-  "format-disconnected": "󰤭",
-  "tooltip-format-wifi": "{essid}",
-  "tooltip-format-ethernet": "{ifname}",
-  "tooltip-format-disconnected": "Déconnecté"
-},
-
-"battery": {
-  "format": "{icon}",
-  "format-charging": "󰂄",
-  "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-  "tooltip-format": "{capacity}%",
-  "states": {
-    "warning": 30,
-    "critical": 15
-  }
-},
-"custom/claude": {
-  "exec": "python ~/.config/waybar/scripts/claude-usage.py",
-  "return-type": "json",
-  "format": "{}",
-  "interval": 300,
-  "tooltip": true
-}
 }

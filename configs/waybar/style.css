@@ -1,149 +1,164 @@
 @import "colors.css";
 
 * {
-  border: none;
-  border-radius: 0;
-  font-family: 'JetBrainsMono Nerd Font', monospace;
-  font-size: 13px;
-  min-height: 0;
-  padding: 0;
-  margin: 0;
+    font-family: 'JetBrains Mono Nerd Font', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
 }
 
 window#waybar {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-}
-
-.modules-center {
-  background: alpha(@surface1, 0.88);
-  border-radius: 999px;
-  border: 1px solid alpha(@text, 0.07);
-  box-shadow: 0 2px 18px alpha(@base, 0.8);
-  padding: 0 10px;
+    background: transparent;
+    color: @text;
 }
 
 .modules-left {
-  padding: 10px;
-  margin-left: 10px;
-  background: alpha(@surface1, 0.88);
-  border-radius: 999px;
-  border: 1px solid alpha(@text, 0.07);
-  box-shadow: 0 2px 18px alpha(@base, 0.8);
-  padding: 0 10px;
+    background: alpha(@base, 0.88);
+    border-radius: 12px;
+    padding: 0 6px;
+}
+
+.modules-center {
+    background: alpha(@base, 0.88);
+    border-radius: 12px;
+    padding: 0 6px;
 }
 
 .modules-right {
-  background: alpha(@surface1, 0.88);
-  margin-right: 10px;
-  border-radius: 999px;
-  border: 1px solid alpha(@text, 0.07);
-  box-shadow: 0 2px 18px alpha(@base, 0.8);
-  padding: 0 10px;
+    background: alpha(@base, 0.88);
+    border-radius: 12px;
+    padding: 0 6px;
 }
 
+#custom-arch,
+#temperature,
 #clock,
-#workspaces,
 #pulseaudio,
 #network,
-#battery {
-  background: transparent;
-  color: @text;
+#battery,
+#custom-notifications {
+    padding: 2px 12px;
+    margin: 4px 2px;
+    border-radius: 999px;
+    color: @text;
+    background: transparent;
+    transition: all 0.2s ease;
 }
-#tray{
-  color: #ffffff;
+
+#custom-arch {
+    font-size: 16px;
+    color: @teal;
+    padding: 2px 8px;
 }
-#mpris{
-  background: transparent;
-  color: @text;
-  margin-left: 50px;
+
+#custom-arch:hover { color: @peach; }
+
+#temperature {
+    color: @peach;
+    background: alpha(@surface1, 0.5);
 }
+
+#temperature.critical {
+    color: @teal;
+    background: alpha(@surface2, 0.6);
+    animation: pulse 1s infinite;
+}
+
 #clock {
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  padding: 0 14px 0 10px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 2px 14px;
+    color: @text;
 }
 
 #workspaces {
-  padding: 0 4px;
+    margin: 4px 2px;
+    padding: 0 2px;
 }
 
 #workspaces button {
-  background: transparent;
-  color: alpha(@text, 0.35);
-  border-radius: 50px;
-  min-width: 28px;
-  min-height: 22px;
-  padding: 0 6px;
-  margin: 7px 2px;
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 0.15s ease;
+    background: alpha(@surface1, 0.5);
+    color: @blue;
+    border-radius: 999px;
+    padding: 2px 10px;
+    margin: 0 2px;
+    min-width: 28px;
+    font-size: 13px;
+    transition: all 0.15s ease;
+    border: none;
+    box-shadow: none;
 }
 
 #workspaces button:hover {
-  background: alpha(@text, 0.08);
-  color: @text;
-  box-shadow: none;
+    background: alpha(@surface2, 0.7);
+    color: @text;
 }
 
 #workspaces button.active {
-  background: linear-gradient(135deg, @teal, @yellow);
-  color: @base;
-  border-radius: 8px;
-  box-shadow: 0 0 10px alpha(@teal, 0.4);
-}
-
-#workspaces button.occupied {
-  color: @text;
+    background: @teal;
+    color: @base;
+    font-weight: 700;
+    box-shadow: 0 0 10px alpha(@teal, 0.35);
 }
 
 #workspaces button.urgent {
-  background: alpha(@peach, 0.2);
-  color: @peach;
-}
-
-#mpris {
-  font-size: 12px;
-  color: alpha(@text, 0.75);
-  padding: 0 14px 0 4px;
-}
-
-#mpris.paused {
-  color: alpha(@text, 0.35);
+    background: alpha(@surface2, 0.6);
+    color: @peach;
 }
 
 #pulseaudio,
 #network,
 #battery {
-  font-size: 15px;
-  padding: 0 9px;
+    background: alpha(@surface1, 0.5);
 }
 
-#pulseaudio.muted,
-#network.disconnected {
-  color: alpha(@text, 0.25);
+#pulseaudio:hover,
+#network:hover,
+#battery:hover {
+    background: alpha(@surface2, 0.7);
 }
 
-#battery.warning {
-  color: @yellow;
+#pulseaudio.muted {
+    color: @blue;
+    background: alpha(@surface1, 0.3);
 }
 
-#battery.critical {
-  color: @peach;
-  animation: blink 1s linear infinite;
+#network.disconnected { color: @peach; }
+
+#battery.charging,
+#battery.plugged {
+    color: @yellow;
+    background: alpha(@surface1, 0.5);
 }
 
-#battery.charging {
-  color: @teal;
+#battery.warning:not(.charging) {
+    color: @peach;
+    background: alpha(@surface2, 0.5);
 }
 
-#battery {
-  padding-right: 10px;
+#battery.critical:not(.charging) {
+    color: @teal;
+    background: alpha(@surface2, 0.6);
+    animation: pulse 1.5s infinite;
 }
 
-@keyframes blink {
-  to { opacity: 0.3; }
+#custom-notifications {
+    font-size: 15px;
+    padding: 2px 8px;
+    background: transparent;
+    color: @text;
 }
+
+#custom-notifications:hover { color: @teal; }
+
+tooltip {
+    background: alpha(@base, 0.95);
+    border: 1px solid alpha(@surface2, 0.8);
+    border-radius: 10px;
+    color: @text;
+    padding: 6px 10px;
+}
+
