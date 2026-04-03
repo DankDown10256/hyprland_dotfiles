@@ -1,190 +1,183 @@
 @import "colors.css";
+/* ---------------- Base Variables ---------------- */
 
-* {
-    font-family: "JetBrainsMono Nerd Font Mono", "JetBrainsMono NFP";
-    font-weight: bold;
+:root {
+
+  --cc-bg: alpha(@surface_container_high, 0.80);
+
+  --noti-bg: alpha(@surface_container, 0.85);
+  --noti-border-color: @outline_variant;
+
+  --text-color: @on_surface;
+
+  --border-radius: 14px;
+
+  --notification-shadow:
+    0 2px 6px rgba(0,0,0,0.35);
 }
 
-.control-center {
-    background: alpha(@background, 0.8);
-    border: 2px solid @primary;
-    border-radius: 25px;
-    box-shadow: none;
+/* ---------------- Transparent Window ---------------- */
+
+notificationwindow,
+blankwindow {
+  background: transparent;
 }
 
-.notification {
-    background: alpha(@surface, 0.6);
-    border-radius: 25px;
-    border: 1px solid @outline;
-    box-shadow: none;
-    margin: 10px; 
+/* ---------------- OLD Notification Style (Compact) ---------------- */
+
+.notification-row {
+  background: none;
+  outline: none;
+  margin: 4px 8px;
 }
+
+.notification-row .notification-background .notification {
+
+  background: var(--noti-bg);
+
+  border-radius: var(--border-radius);
+  border: 1px solid var(--noti-border-color);
+
+  padding: 10px 12px;   /* ↓ Reduced */
+  box-shadow: var(--notification-shadow);
+
+  transition: 0.2s ease;
+}
+
+/* Hover like previous UI */
+
+.notification-row:hover .notification-background .notification {
+  background: alpha(@secondary_container, 0.35);
+}
+
+/* Notification content spacing */
 
 .notification-content {
-    background: transparent;
-    padding: 20px; 
+  padding: 2px;   /* ↓ Reduced */
 }
 
+/* Notification image */
+
+.notification image {
+  border-radius: 10px;
+  margin-right: 8px;
+  min-width: 36px;   /* ↓ Smaller */
+  min-height: 36px;
+}
+
+/* ---------- Smaller Text ---------- */
+
 .summary {
-    font-size: 16px;
-    color: @primary;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .body {
-    font-size: 14px;
-    color: #ffffff;
+  font-size: 11px;
+  opacity: 0.85;
 }
 
-.time {
-    font-size: 12px;
-    color: @on_surface_variant;
+/* Close Button Classic */
+
+.close-button {
+  background: transparent;
+  border-radius: 50%;
+  margin-top: 4px;
+  margin-right: 4px;
+  min-width: 20px;
+  min-height: 20px;
 }
 
-.notification.critical {
-    background: alpha(@surface, 0.6);
-    border: 2px solid @error;
+.close-button:hover {
+  background: alpha(@primary, 0.25);
 }
 
-.notification.critical .summary {
-    color: @error;
+/* ---------------- MPRIS (UNCHANGED - YOUR PERFECT PART) ---------------- */
+
+.mpris {
+  background: alpha(@surface_container, 0.6);
+  border-radius: 12px;
+  margin: 8px;
+  padding: 8px;
+  transform: scale(0.8);
+  transform-origin: top center;
 }
 
-.notification-action {
-    background: alpha(@surface_container, 0.5);
-    color: #ffffff;
-    border: 1px solid @outline;
-    border-radius: 8px;
-    padding: 6px 12px;
-    box-shadow: none;
+.mpris-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: @on_surface;
 }
 
-.notification-action:hover {
-    background: @primary;
-    color: @on_primary;
-    box-shadow: none;
+.mpris-artist {
+  font-size: 10px;
+  color: alpha(@on_surface, 0.7);
 }
+
+.mpris-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+  gap: 10px;
+}
+
+.mpris-button {
+  font-size: 18px;
+  color: @primary;
+  opacity: 0.8;
+}
+
+.mpris-button:hover {
+  opacity: 1;
+}
+
+/* ---------------- Bottom Buttons (UNCHANGED) ---------------- */
+
+.widget-buttons-grid {
+  margin: 6px;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.widget-buttons-grid button {
+  background: @surface_container;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 18px;
+  color: @primary;
+  border: 1px solid @primary;
+  transition: 0.2s ease;
+}
+
+.widget-buttons-grid button:hover {
+  transform: scale(1.1);
+  background: @primary;
+  color: @on_primary;
+}
+
+.widget-buttons-grid button:checked {
+  background: @primary;
+  color: @on_primary;
+}
+
+/* ---------------- Widget Margins ---------------- */
 
 .widget-title {
-    color: @primary;
-    background: transparent;
-    margin: 10px 20px;
-    font-size: 1.2rem;
-}
-
-.widget-title > button {
-    background: @surface_container;
-    color: #ffffff;
-    border-radius: 8px;
-    padding: 6px 16px;
-    border: none;
-    box-shadow: none;
-}
-
-.widget-title > button:hover {
-    background: @error;
-    color: @on_error;
-    box-shadow: none;
-}
-
-.widget-dnd {
-    background: transparent;
-    margin: 0px 20px;
-}
-
-.widget-dnd > switch {
-    background: @surface_container;
-    border-radius: 12px;
-    box-shadow: none;
-}
-
-.widget-dnd > switch:hover {
-    background: @surface_container_high;
-    box-shadow: none;
-    border: none;
-}
-
-.widget-dnd > switch:checked {
-    background: @primary;
-    border: none;
-    box-shadow: none;
-}
-
-.widget-dnd > switch:checked:hover {
-    background: @primary;
-    box-shadow: none;
-}
-
-.widget-dnd > label {
-    color: #ffffff;
-    font-size: 1.1rem;
-}
-
-.widget-volume {
-    background: alpha(@surface, 0.6);
-    padding: 15px;
-    margin: 10px 20px;
-    border-radius: 12px;
-}
-
-.widget-volume label {
-    color: @primary;
-    font-size: 20px;
-}
-
-.widget-volume trough highlight {
-    background: @primary;
-    border-radius: 20px;
-}
-
-.widget-volume trough {
-    background: @surface_container_high;
-    border-radius: 20px;
-}
-
-.widget-mpris-player {
-    padding: 0px;
-    margin: 10px;
-    min-height: 0px;
+  margin: 0 3px;
 }
 
 .widget-mpris {
-    padding: 0px;
-    min-height: 0px;
+  margin-bottom: 0px;
+  margin-top: -3px;
+  margin-left: -8px;
+  margin-right: -8px;
 }
 
-.widget-mpris-player>box>button {
-    margin: 0px;
-}
+/* ---------------- Remove GTK Focus Outline ---------------- */
 
-.widget-buttons-grid {
-    padding: 10px;
-    margin: 10px 20px;
-    background: alpha(@surface, 0.6);
-    border-radius: 16px;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button {
-    background: transparent;
-    border-radius: 12px;
-    margin: 0px;
-    padding: 12px;
-    box-shadow: none;
-    border: none;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button:hover {
-    background: @primary;
-    color: @on_primary;
-    box-shadow: none;
-    border: none;
-    text-shadow: none;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button label {
-    font-size: 24px;
-    color: @primary;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button:hover label {
-    color: @on_primary;
+*:focus {
+  outline: none;
+  box-shadow: none;
 }
