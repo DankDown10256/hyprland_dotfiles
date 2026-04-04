@@ -1,0 +1,133 @@
+/**
+ * @name Dracula Vesktop Theme Enhanced
+ * @author CtorW
+ * @version 2.0.0
+ * @description A highly customizable Dracula theme for Vesktop, built on a custom, stable base.
+ * @website https://github.com/CtorW
+ * @source https://github.com/CtorW/DiscordDracula
+*/
+
+/*
+████████▄     ▄████████    ▄████████  ▄████████ ███    █▄   ▄█          ▄████████
+███   ▀███   ███    ███   ███    ███ ███    ███ ███    ███ ███         ███    ███
+███    ███   ███    ███   ███    ███ ███    █▀  ███    ███ ███         ███    ███
+███    ███  ▄███▄▄▄▄██▀   ███    ███ ███        ███    ███ ███         ███    ███
+███    ███ ▀▀███▀▀▀▀▀   ▀███████████ ███        ███    ███ ███       ▀███████████
+███    ███ ▀███████████   ███    ███ ███    █▄  ███    ███ ███         ███    ███
+███   ▄███   ███    ███   ███    ███ ███    ███ ███    ███ ███▌    ▄   ███    ███
+████████▀    ███    ███   ███    █▀  ████████▀  ████████▀  █████▄▄██   ███    █▀ 
+             ███    ███                                    ▀                     
+*/
+
+/* --- CORE --- */
+@import url('https://raw.githubusercontent.com/CtorW/Vesktop-Discord/refs/heads/main/DraC/DraculaDscrd.css');
+
+/* --- FONT  --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+
+
+/*
+====================================================================================================
+    DRACULA PALETTE & THEME CONFIGURATION
+====================================================================================================
+*/
+
+/* --- Dracula palette definition --- */
+:root {
+  --dracula-background: #282a36;
+  --dracula-background-alt: #343746;
+  --dracula-current-line: #44475a;
+  --dracula-selection: #44475a;
+  --dracula-foreground: #f8f8f2;
+  --dracula-comment: #6272a4;
+  --dracula-cyan: #8be9fd;
+  --dracula-green: #50fa7b;
+  --dracula-orange: #ffb86c;
+  --dracula-pink: #ff79c6;
+  --dracula-purple: #bd93f9;
+  --dracula-red: #ff5555;
+  --dracula-yellow: #f1fa8c;
+}
+
+/* --- Feature & layout variables --- */
+body {
+
+    --font: 'Inter';
+    --code-font: 'Fira Code';
+
+    --custom-dms-icon: custom;
+    --dms-icon-svg-url: url('https://raw.githubusercontent.com/CtorW/Vesktop-Discord/refs/heads/main/data/DracIcon.svg');
+    --dms-icon-svg-size: 90%;
+    --dms-icon-color-before: var(--icon-secondary);
+    --dms-icon-color-after: var(--white);
+}
+
+/*
+====================================================================================================
+    DRACULA COLOR
+====================================================================================================
+*/
+:root {
+    --colors: on;
+
+    /* text */
+    --text-0: var(--dracula-background);
+    --text-1: var(--dracula-foreground);
+    --text-2: var(--dracula-foreground);
+    --text-3: var(--dracula-foreground);
+    --text-4: var(--dracula-comment);
+    --text-5: var(--dracula-comment);
+
+    /* backgrounds */
+    --bg-1: var(--dracula-current-line);
+    --bg-2: var(--dracula-selection);
+    --bg-3: var(--dracula-background-alt);
+    --bg-4: var(--dracula-background);
+    --hover: rgba(68, 71, 90, 0.5);
+    --active: var(--dracula-current-line);
+    --active-2: rgba(68, 71, 90, 0.7);
+    --message-hover: rgba(0, 0, 0, 0.1);
+
+    /* accents */
+    --accent-1: var(--dracula-cyan);
+    --accent-2: var(--dracula-purple);
+    --accent-3: var(--dracula-purple);
+    --accent-4: var(--dracula-pink);
+    --accent-5: var(--dracula-current-line);
+    --accent-new: var(--dracula-red);
+    --mention: linear-gradient(to right, color-mix(in srgb, var(--dracula-purple), transparent 85%) 40%, transparent);
+    --mention-hover: linear-gradient(to right, color-mix(in srgb, var(--dracula-purple), transparent 90%) 40%, transparent);
+    --reply: linear-gradient(to right, color-mix(in srgb, var(--dracula-comment), transparent 90%) 40%, transparent);
+    --reply-hover: linear-gradient(to right, color-mix(in srgb, var(--dracula-comment), transparent 95%) 40%, transparent);
+
+    /* statuses */
+    --online: var(--dracula-green);
+    --dnd: var(--dracula-red);
+    --idle: var(--dracula-orange);
+    --streaming: var(--dracula-purple);
+    --offline: var(--dracula-comment);
+
+    /* borders */
+    --border-light: rgba(0, 0, 0, 0.2);
+    --border: var(--dracula-current-line);
+    --button-border: transparent;
+    --border-hover: var(--dracula-purple);
+
+    /* base color palette */
+    --red-1: var(--dracula-red); --red-2: var(--dracula-red); --red-3: var(--dracula-red); --red-4: var(--dracula-red); --red-5: var(--dracula-red);
+    --green-1: var(--dracula-green); --green-2: var(--dracula-green); --green-3: var(--dracula-green); --green-4: var(--dracula-green); --green-5: var(--dracula-green);
+    --blue-1: var(--dracula-cyan); --blue-2: var(--dracula-cyan); --blue-3: var(--dracula-cyan); --blue-4: var(--dracula-cyan); --blue-5: var(--dracula-cyan);
+    --yellow-1: var(--dracula-yellow); --yellow-2: var(--dracula-yellow); --yellow-3: var(--dracula-yellow); --yellow-4: var(--dracula-yellow); --yellow-5: var(--dracula-yellow);
+    --purple-1: var(--dracula-purple); --purple-2: var(--dracula-purple); --purple-3: var(--dracula-purple); --purple-4: var(--dracula-purple); --purple-5: var(--dracula-purple);
+}
+/*
+ ▄████████     ███      ▄██████▄     ▄████████  ▄█     █▄ 
+███    ███ ▀█████████▄ ███    ███   ███    ███ ███     ███
+███    █▀     ▀███▀▀██ ███    ███   ███    ███ ███     ███
+███            ███   ▀ ███    ███  ▄███▄▄▄▄██▀ ███     ███
+███            ███     ███    ███ ▀▀███▀▀▀▀▀   ███     ███
+███    █▄      ███     ███    ███ ▀███████████ ███     ███
+███    ███     ███     ███    ███   ███    ███ ███ ▄█▄ ███
+████████▀     ▄████▀    ▀██████▀    ███    ███  ▀███▀███▀ 
+                                    ███    ███            
+*/

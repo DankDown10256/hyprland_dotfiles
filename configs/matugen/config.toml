@@ -72,3 +72,12 @@ output_path = '~/.config/wlogout/style.css'
 [templates.quickshell]
 input_path = "~/.config/hypr/scripts/quickshell/colors.json.template"
 output_path = "/tmp/qs_colors.json"
+
+[templates.discord]
+input_path = "~/.config/matugen/templates/discord.css.template"
+output_path = "~/.config/vesktop/themes/matugen.theme.css"
+
+[templates.spicetify]
+input_path = '~/.config/matugen/templates/spicetify.ini'
+output_path = '~/.config/spicetify/Themes/matugen/color.ini'
+
