@@ -1,7 +1,9 @@
 // -*- mode: jsonc -*-
 {
     "layer": "top",
-    "position": "top", 
+    "position": "top",
+    "margin-top": 5,
+    "margin-bottom": 0,
     "height": 20,
     "modules-left": [
         "custom/notification",
