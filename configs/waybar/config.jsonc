@@ -1,98 +1,111 @@
+// -*- mode: jsonc -*-
 {
     "layer": "top",
-    "position": "top",
+    "position": "top", 
     "height": 20,
-    "spacing": 0,
-    "margin-top": 5,
-    "margin-left": 10,
-    "margin-right": 10,
-    "margin-bottom": 0,
-    "exclusive": true,
-
     "modules-left": [
-        "custom/arch",
-        "temperature"
-    ],
-
-    "modules-center": [
+        "custom/notification",
         "clock",
+        "custom/weather"
+    ],
+    "modules-center": [
         "hyprland/workspaces"
     ],
-
     "modules-right": [
         "pulseaudio",
-        "network",
         "battery",
-        "custom/notifications"
+        "network",
+        "custom/power"
     ],
-
-    "custom/arch": {
-        "format": "󰣇",
-        "tooltip": false
-    },
-
-    "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        "format": " {temperatureC}°C",
-        "format-critical": " {temperatureC}°C",
-        "tooltip": false
-    },
-
-    "clock": {
-        "format": "{:%I:%M %p}",
-        "format-alt": "{:%A, %B %d, %Y}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "1": ">_",
-            "2": "",
-            "3": "",
+            "1": "",
+            "2": "",
+            "3": "",
             "4": "",
-            "5": ""
+            "5": ""
         },
-        "on-click": "activate",
-        "sort-by-number": true,
         "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
+             "*": 5, // 5 workspaces by default on every monitor
+             "HDMI-A-1": 3 // but only three on HDMI-A-1
         }
     },
-
-    "pulseaudio": {
-        "format": " {volume}%",
-        "format-muted": " muted",
-        "on-click": "pavucontrol",
-        "tooltip": false,
-        "scroll-step": 5
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",       /* Ajout d'espaces */
+        "format-full": "{icon}  {capacity}%",  /* Ajout d'espaces */
+        "format-charging": "  {capacity}%",   /* Ajout d'espaces */
+        "format-plugged": "  {capacity}%",    /* Ajout d'espaces */
+        "format-alt": "{time} {icon}",
+        "on-click": "com.github.d4nj1.tlpui",
+        "format-icons": ["", "", "", "", ""]
     },
-
+    "custom/weather": {
+         "exec": "${HOME}/.config/waybar/scripts/get_weather.sh Berlin+Germany",
+         "return-type": "json",
+         "format": "{}",
+         "tooltip": true,
+         "interval": 3600
+    },
     "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": "󰈀 {ifname}",
-        "format-disconnected": "󰖪 Off",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+        "format-wifi": "  Network",           /* Ajout d'espaces */
+        "format-ethernet": "  {ipaddr}/{cidr}", /* Inversé pour mettre l'icône au début avec espace */
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "  {ifname} (No IP)",  /* Harmonisé avec icône au début */
+        "format-disconnected": "⚠  Disconnected", /* Harmonisé avec icône au début */
+        "format-alt": "  Network",            /* Ajout d'espaces */
         "on-click": "nm-connection-editor"
     },
-
-    "battery": {
-        "states": { "warning": 30, "critical": 15 },
-        "format": " {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-full": " {capacity}%",
-        "tooltip": false
+    "custom/notification": {
+        "tooltip": true,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "",
+            "none": "",
+            "dnd-notification": "",
+            "dnd-none": "",
+            "inhibited-notification": "",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
-
-    "custom/notifications": {
-        "format": "",
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",          /* Ajout d'espaces */
+        "format-bluetooth": " {icon} {volume}%", /* Réorganisé pour plus de clarté */
+        "format-bluetooth-muted": "  {icon}",  /* Réorganisé */
+        "format-muted": "  Muted",             /* Ajout de texte optionnel ou juste espace */
+        "format-source": "  {volume}%",        /* Harmonisé avec icône au début */
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "format" : "",
         "tooltip": false,
-        "on-click": "swaync-client -t -sw"
+        "on-click": "wlogout -b 6"
+    },
+    "clock": {
+        "interval": 60,
+        "format": "  {:%I:%M %p}",             /* Ajout d'espaces */
+        "max-length": 25
     }
 }

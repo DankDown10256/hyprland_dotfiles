@@ -1,164 +1,129 @@
 @import "colors.css";
 
 * {
-    font-family: 'JetBrains Mono Nerd Font', monospace;
-    font-size: 13px;
-    font-weight: 500;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "Adwaita Sans", "Font Awesome", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
     border: none;
-    border-radius: 0;
-    min-height: 0;
+    text-shadow: none;
+    box-shadow: none;
 }
 
 window#waybar {
-    background: transparent;
-    color: @text;
-}
-
-.modules-left {
-    background: alpha(@base, 0.88);
-    border-radius: 12px;
-    padding: 0 6px;
-}
-
-.modules-center {
-    background: alpha(@base, 0.88);
-    border-radius: 12px;
-    padding: 0 6px;
-}
-
-.modules-right {
-    background: alpha(@base, 0.88);
-    border-radius: 12px;
-    padding: 0 6px;
-}
-
-#custom-arch,
-#temperature,
-#clock,
-#pulseaudio,
-#network,
-#battery,
-#custom-notifications {
-    padding: 2px 12px;
-    margin: 4px 2px;
-    border-radius: 999px;
-    color: @text;
-    background: transparent;
-    transition: all 0.2s ease;
-}
-
-#custom-arch {
-    font-size: 16px;
-    color: @teal;
-    padding: 2px 8px;
-}
-
-#custom-arch:hover { color: @peach; }
-
-#temperature {
-    color: @peach;
-    background: alpha(@surface1, 0.5);
-}
-
-#temperature.critical {
-    color: @teal;
-    background: alpha(@surface2, 0.6);
-    animation: pulse 1s infinite;
-}
-
-#clock {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    padding: 2px 14px;
+    background-color: rgba(25, 18, 12, 0);
     color: @text;
 }
 
 #workspaces {
-    margin: 4px 2px;
-    padding: 0 2px;
+    padding: 2px 5px;
+    background-color: @surface1;
+    margin: 0; /* Plus d'espace forcé autour */
+    border-radius: 25px;
 }
 
 #workspaces button {
-    background: alpha(@surface1, 0.5);
-    color: @blue;
-    border-radius: 999px;
-    padding: 2px 10px;
-    margin: 0 2px;
-    min-width: 28px;
-    font-size: 13px;
-    transition: all 0.15s ease;
-    border: none;
-    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+    padding: 0 8px;
+    background-color: @surface2;
+    border-radius: 20px;
+    min-width: 40px; /* Légèrement réduit */
+    margin: 2px;
+    color: transparent;
 }
 
 #workspaces button:hover {
-    background: alpha(@surface2, 0.7);
-    color: @text;
+    background: @teal;
+    color: @base;
 }
 
 #workspaces button.active {
-    background: @teal;
+    transition: all 0.3s ease-in-out;
+    min-width: 65px; /* Évite les sauts trop violents */
+    background-color: @yellow;
     color: @base;
-    font-weight: 700;
-    box-shadow: 0 0 10px alpha(@teal, 0.35);
 }
 
 #workspaces button.urgent {
-    background: alpha(@surface2, 0.6);
-    color: @peach;
+    background-color: @teal;
+    color: @base;
 }
 
-#pulseaudio,
+#clock,
+#custom-weather,
+#battery,
 #network,
-#battery {
-    background: alpha(@surface1, 0.5);
+#custom-power,
+#custom-notification,
+#tray,
+#pulseaudio {
+    padding: 0 10px; /* Réduit pour tasser la barre */
+    background-color: @surface1;
+    border-radius: 50px;
+    margin: 2px; /* Marges réduites au strict minimum */
 }
 
-#pulseaudio:hover,
-#network:hover,
-#battery:hover {
-    background: alpha(@surface2, 0.7);
-}
-
-#pulseaudio.muted {
-    color: @blue;
-    background: alpha(@surface1, 0.3);
-}
-
-#network.disconnected { color: @peach; }
-
-#battery.charging,
-#battery.plugged {
-    color: @yellow;
-    background: alpha(@surface1, 0.5);
-}
-
-#battery.warning:not(.charging) {
+#custom-weather {
+    transition: all 0.2s ease-in-out;
     color: @peach;
-    background: alpha(@surface2, 0.5);
+}
+
+#tray {
+    transition: all 0.2s ease-in-out;
+    color: @peach;
+}
+
+#custom-notification {
+    transition: all 0.2s ease-in-out;
+    color: @teal;
+}
+
+#custom-power {
+    transition: all 0.2s ease-in-out;
+    color: @teal;
+}
+
+#clock {
+    transition: all 0.2s ease-in-out;
+    color: @text;
+}
+
+#battery {
+    transition: all 0.2s ease-in-out;
+    color: @green;
+}
+
+#battery.charging, #battery.plugged {
+    transition: all 0.2s ease-in-out;
+    color: @green;
 }
 
 #battery.critical:not(.charging) {
+    transition: all 0.2s ease-in-out;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
     color: @teal;
-    background: alpha(@surface2, 0.6);
-    animation: pulse 1.5s infinite;
 }
 
-#custom-notifications {
-    font-size: 15px;
-    padding: 2px 8px;
-    background: transparent;
-    color: @text;
+#network {
+    transition: all 0.2s ease-in-out;
+    color: @yellow;
 }
 
-#custom-notifications:hover { color: @teal; }
-
-tooltip {
-    background: alpha(@base, 0.95);
-    border: 1px solid alpha(@surface2, 0.8);
-    border-radius: 10px;
-    color: @text;
-    padding: 6px 10px;
+#network.disconnected {
+    transition: all 0.2s ease-in-out;
+    color: @surface2;
 }
 
+#pulseaudio {
+    transition: all 0.2s ease-in-out;
+    color: @peach;
+}
+
+#pulseaudio.muted {
+    transition: all 0.2s ease-in-out;
+    color: @surface2;
+}
