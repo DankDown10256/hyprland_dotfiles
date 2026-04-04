@@ -1,125 +1,82 @@
 configuration {
-    modi:                       "drun,run,window";
-    show-icons:                 true;
-    display-drun:               "";
-    display-run:                "";
-    display-window:             "";
-    drun-display-format:        "{name}";
-    font:                        "JetBrainsMono Nerd Font 10";
+    modi:                   "drun";
+    font:                   "Rubik 10";
+    display-drun:           "";
+    sidebar-mode:           false;
 }
 
-@import "~/.config/rofi/colors.rasi"
+/* On importe le fichier généré par Matugen */
+@theme "~/.config/rofi/colors.rasi"
 
 * {
-    background-color: transparent;
-    text-color:       @foreground;
+    /* Liaison des couleurs Matugen aux variables de ce thème */
+    bg:                     @background;
+    fg:                     @foreground;
+    button:                 @background-alt;
+
+    background-color:       @bg;
+    text-color:             @fg;
 }
 
-/* Fenêtre centrée et épurée */
 window {
-    width:            600px;
-    height:           400px;
-    border:           1px;
-    border-color:     @background-alt; /* Bordure très discrète */
-    border-radius:    10px;
-    background-color: @background;
-    padding:          20px;
+    transparency:           "real";
+    border-radius:          7px;
+    width:                  40%;
+    y-offset:               10px;
+    padding:                20px;
+    location:               south;
+}
+
+prompt { enabled: false; }
+
+entry {
+    placeholder:            "Search";
+    expand:                 true;
+    padding:                5px 2% 5px 2%;
+    background-color:       @button;
+    placeholder-color:      @fg;
+}
+
+inputbar {
+    children:               [ prompt, entry ];
+    background-color:       @button;
+    text-color:             @fg;
+    expand:                 false;
+    border-radius:          6px;
+    padding:                8px;
+}
+
+listview {
+    columns:                1;
+    lines:                  8;
+    cycle:                  false;
+    dynamic:                true;
+    layout:                 vertical;
 }
 
 mainbox {
-    orientation:      vertical;
-    children:         [ "inputbar", "listview" ];
-    spacing:          15px;
-    background-color: @background;
+    children:               [ inputbar, listview ];
+    spacing:                2%;
+    padding:                2% 1% 2% 1%;
 }
 
-/* Barre de recherche minimaliste */
-inputbar {
-    spacing:          10px;
-    padding:          5px;
-    children:         [ "prompt", "entry" ];
-    border:           0px 0px 1px 0px; 
-    border-color:     @background-alt;
-    background-color: @background;
-}
-
-prompt {
-    text-color:       @selected;
-    background-color: transparent;
-}
-
-entry {
-    placeholder:      "Rechercher...";
-    placeholder-color: #5c6364;
-    text-color:       @foreground;
-    background-color: transparent;
-}
-
-/* Liste des applications très aérée */
-listview {
-    columns:          1;
-    lines:            6;
-    cycle:            true;
-    dynamic:          true;
-    layout:           vertical;
-    spacing:          5px;
-    background-color: transparent;
-}
-
-/* Style de base des lignes */
 element {
-    padding:          8px 12px;
-    border-radius:    6px;
-    spacing:          12px;
-}
-
-/* --- LE FIX POUR LE FOND BEIGE --- */
-/* On force le fond transparent sur TOUS les éléments non sélectionnés */
-
-element normal.normal, 
-element alternate.normal {
-    background-color: transparent;
-    text-color:       @foreground;
-}
-
-element normal.active, 
-element alternate.active {
-    background-color: transparent;
-    text-color:       @active;
-}
-
-element normal.urgent, 
-element alternate.urgent {
-    background-color: transparent;
-    text-color:       @urgent;
-}
-
-/* --- STYLE DE L'ÉLÉMENT SÉLECTIONNÉ --- */
-/* Le curseur colore le texte en cyan sur un fond gris très discret */
-
-element selected.normal {
-    background-color: @background-alt;
-    text-color:       @selected;
-}
-
-element selected.active {
-    background-color: @background-alt;
-    text-color:       @selected;
-}
-
-element selected.urgent {
-    background-color: @urgent;
-    text-color:       @background;
-}
-
-/* Gestion des icônes et du texte */
-element-icon {
-    size:             22px;
-    background-color: transparent;
+    orientation:            vertical;
+    border-radius:          0%;
+    padding:                1.5% 0% 1.5% 0%;
 }
 
 element-text {
-    vertical-align:   0.5;
-    text-color:       inherit; /* Très important pour que le texte change de couleur au survol */
-    background-color: transparent;
+    expand:                 true;
+    vertical-align:         0.5;
+    margin:                 0.5% 3% 0% 3%;
+    background-color:       inherit;
+    text-color:             inherit;
+}
+
+element selected {
+    /* On utilise la couleur 'selected' de Matugen pour l'élément actif */
+    background-color:       @selected;
+    text-color:             @background; /* Fond souvent sombre, donc texte clair (ou inversement) */
+    border-radius:          6px;
 }
