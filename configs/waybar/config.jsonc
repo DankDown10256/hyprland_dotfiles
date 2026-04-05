@@ -52,15 +52,11 @@
          "format": "{}",
          "tooltip": true,
          "interval": 3600
-    },
+    }, 
     "network": {
-        "format-wifi": "  Network",           /* Ajout d'espaces */
-        "format-ethernet": "  {ipaddr}/{cidr}", /* Inversé pour mettre l'icône au début avec espace */
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "  {ifname} (No IP)",  /* Harmonisé avec icône au début */
-        "format-disconnected": "⚠  Disconnected", /* Harmonisé avec icône au début */
-        "format-alt": "  Network",            /* Ajout d'espaces */
-        "on-click": "nm-connection-editor"
+      "format-wifi": " ",
+      "format-ethernet": "",
+      "format-disconnected": "󰖪"
     },
     "custom/notification": {
         "tooltip": true,
