@@ -32,8 +32,8 @@ if [[ -n "$selected_wall" ]]; then
     cp "$FULL_PATH" "$TARGET_DIR/$TARGET_NAME"
 
     # Matugen selon le thème
-    if [[ "$THEME_CHOISI" == "anime" || "$THEME_CHOISI" == "eink" ]]; then
-        matugen image "$TARGET_DIR/$TARGET_NAME"
+    if [[ "$THEME_CHOISI" == "eink" ]]; then
+        matugen image "$TARGET_DIR/$TARGET_NAME" -t scheme-monochrome
     else
         matugen image "$TARGET_DIR/$TARGET_NAME"
     fi
