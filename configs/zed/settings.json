@@ -61,7 +61,7 @@
   "buffer_font_size": 13.0,
   "theme": {
     "mode": "dark",
-    "light": "Everforest Light Hard (regular)",
-    "dark": "Everforest Dark Hard (regular)",
+    "light": "Everforest Light Soft (material)",
+    "dark": "Monokai Pro (CE)",
   },
 }
