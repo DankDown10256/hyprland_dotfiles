@@ -58,10 +58,6 @@ output_path = '~/.config/gtk-4.0/colors.css'
 input_path = "~/.config/matugen/templates/obsidian.css"
 output_path = "/home/lucas/Obsidian Vault/.obsidian/snippets/matugen-colors.css"
 
-[templates.cursor]
-input_path = '~/.config/matugen/templates/cursor.json'
-output_path = '~/.config/Cursor/User/settings.json'
-
 [templates.wlogout]
 input_path = '~/.config/matugen/templates/wlogout.css'
 output_path = '~/.config/wlogout/style.css'
