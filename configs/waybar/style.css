@@ -1,129 +1,65 @@
 @import "colors.css";
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "Adwaita Sans", "Font Awesome", sans-serif;
-    font-size: 14px;
-    font-weight: bold;
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
     border: none;
-    text-shadow: none;
-    box-shadow: none;
+    border-radius: 0;
 }
 
 window#waybar {
-    background-color: rgba(25, 18, 12, 0);
+    background-color: @base;
+    border-bottom: 2px solid @surface2;
     color: @text;
-}
-
-#workspaces {
-    padding: 2px 5px;
-    background-color: @surface1;
-    margin: 0; /* Plus d'espace forcé autour */
-    border-radius: 25px;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
 #workspaces button {
-    transition: all 0.2s ease-in-out;
-    padding: 0 8px;
-    background-color: @surface2;
-    border-radius: 20px;
-    min-width: 40px; /* Légèrement réduit */
-    margin: 2px;
-    color: transparent;
-}
-
-#workspaces button:hover {
-    background: @teal;
-    color: @base;
+    padding: 0 5px;
+    background-color: transparent;
+    color: @text;
+    border-bottom: 2px solid transparent;
 }
 
 #workspaces button.active {
-    transition: all 0.3s ease-in-out;
-    min-width: 65px; /* Évite les sauts trop violents */
-    background-color: @yellow;
-    color: @base;
+    color: @teal;
+    border-bottom: 2px solid @teal;
 }
 
 #workspaces button.urgent {
-    background-color: @teal;
-    color: @base;
+    background-color: #eb4d4b;
 }
 
-#clock,
-#custom-weather,
-#battery,
-#network,
-#custom-power,
-#custom-notification,
-#tray,
-#pulseaudio {
-    padding: 0 10px; /* Réduit pour tasser la barre */
+/* Style commun pour les modules de droite */
+#cpu, #memory, #backlight, #pulseaudio, #battery, #clock, #tray {
+    padding: 0 10px;
     background-color: @surface1;
-    border-radius: 50px;
-    margin: 2px; /* Marges réduites au strict minimum */
+    margin: 3px 0;
 }
 
-#custom-weather {
-    transition: all 0.2s ease-in-out;
+/* Coins arrondis légers pour le premier et dernier module du bloc droit */
+#cpu {
+    border-radius: 4px 0 0 4px;
     color: @peach;
 }
 
-#tray {
-    transition: all 0.2s ease-in-out;
-    color: @peach;
-}
-
-#custom-notification {
-    transition: all 0.2s ease-in-out;
-    color: @teal;
-}
-
-#custom-power {
-    transition: all 0.2s ease-in-out;
-    color: @teal;
+#memory { color: @yellow; }
+#backlight { color: @teal; }
+#pulseaudio { color: @blue; }
+#battery { 
+    color: @green; 
+    border-radius: 0 4px 4px 0;
+    margin-right: 5px;
 }
 
 #clock {
-    transition: all 0.2s ease-in-out;
-    color: @text;
+    background-color: transparent;
+    font-weight: bold;
 }
 
-#battery {
-    transition: all 0.2s ease-in-out;
-    color: @green;
-}
-
-#battery.charging, #battery.plugged {
-    transition: all 0.2s ease-in-out;
-    color: @green;
-}
-
-#battery.critical:not(.charging) {
-    transition: all 0.2s ease-in-out;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    color: @teal;
-}
-
-#network {
-    transition: all 0.2s ease-in-out;
-    color: @yellow;
-}
-
-#network.disconnected {
-    transition: all 0.2s ease-in-out;
-    color: @surface2;
-}
-
-#pulseaudio {
-    transition: all 0.2s ease-in-out;
-    color: @peach;
-}
-
-#pulseaudio.muted {
-    transition: all 0.2s ease-in-out;
-    color: @surface2;
+#window {
+    padding: 0 10px;
+    color: @blue;
+    font-style: italic;
 }
