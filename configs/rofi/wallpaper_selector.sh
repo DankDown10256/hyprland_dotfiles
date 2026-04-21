@@ -28,7 +28,7 @@ done | rofi -dmenu -i -p "󰸉 Thème : $THEME_CHOISI" -theme "$HOME/.config/rof
 if [[ -n "$selected_wall" ]]; then
     FULL_PATH="$WALL_DIR/$selected_wall"
 
-    swww img "$FULL_PATH" --transition-type center --transition-step 90
+    awww img "$FULL_PATH" --transition-type wipe --transition-angle 30
     cp "$FULL_PATH" "$TARGET_DIR/$TARGET_NAME"
 
     # Matugen selon le thème

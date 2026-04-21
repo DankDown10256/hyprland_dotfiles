@@ -1,6 +1,6 @@
 #!/bin/bash
 THEME_STR="window { width: 20%; } listview { lines: 8; }"
-options="󱄄 Gruvbox\nAnime\nRose Pine\nNord\n󰈊 Other\nAkane\nE-Ink\nEverforest\nMiasma\nWallhaven\nArch Riot\nCpUnk\nCyberpunk\nDelorean\nOsaka Jade"
+options="Gruvbox\nAnime\nRose Pine\nNord\nOther\nAkane\nE-Ink\nEverforest\nMiasma\nWallhaven\nArch Riot\nCpUnk\nCyberpunk\nDelorean\nOsaka Jade"
 choix=$(echo -e "$options" | rofi -dmenu -i -p "󱥚 Style :" -theme-str "$THEME_STR")
 
 case "$choix" in
@@ -37,7 +37,7 @@ fi
 TARGET_DIR="$HOME/current_wallpaper"
 mkdir -p "$TARGET_DIR"
 
-swww img "$first_wall" --transition-type center --transition-step 90
+awww img "$first_wall"
 cp "$first_wall" "$TARGET_DIR/background.jpg"
 
 # Matugen selon le thème
