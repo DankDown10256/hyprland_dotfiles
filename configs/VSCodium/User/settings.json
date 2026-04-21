@@ -1,72 +1,16 @@
 {
-    "workbench.colorCustomizations": {
-        "editor.background": "#0f1417",
-        "sideBar.background": "#0f1417",
-        "sideBar.border": "#0f1417",
-        "activityBar.background": "#0f1417",
-        "activityBar.border": "#0f1417",
-        "editorGroupHeader.tabsBackground": "#0f1417",
-        "editorGroupHeader.tabsBorder": "#0f1417",
-        "tab.activeBackground": "#0f1417",
-        "tab.activeBorder": "#90cef4",
-        "tab.inactiveBackground": "#0f1417",
-        "editorLineNumber.foreground": "#41484d",
-        "editorLineNumber.activeForeground": "#90cef4",
-        "editorCursor.foreground": "#90cef4",
-        "editor.selectionBackground": "#004c6966"
-    },
-
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": [
-                    "entity.name.tag",
-                    "meta.tag.sgml.doctype.html",
-                    "punctuation.definition.tag"
-                ],
-                "settings": {
-                    "foreground": "#90cef4",
-                    "fontStyle": "bold"
-                }
-            },
-            {
-                "scope": "entity.other.attribute-name",
-                "settings": {
-                    "foreground": "#c0c7cd"
-                }
-            },
-            {
-                "scope": "text.html.derivative",
-                "settings": {
-                    "foreground": "#dfe3e7"
-                }
-            },
-            {
-                "scope": "comment",
-                "settings": {
-                    "foreground": "#8b9297",
-                    "fontStyle": "italic"
-                }
-            }
-        ]
-    },
-
-    "workbench.activityBar.location": "hidden",
-    "workbench.statusBar.visible": false,
     "editor.minimap.enabled": false,
-    "editor.scrollbar.vertical": "hidden",
-    "editor.glyphMargin": false,
-    "editor.folding": false,
-    "breadcrumbs.enabled": false,
-    "workbench.editor.showTabs": "single",
-    "window.menuBarVisibility": "toggle",
-    "window.commandCenter": false,
-    "workbench.layoutControl.enabled": false,
-    "editor.lineNumbers": "on",
-    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "workbench.activityBar.location": "top",
+    "workbench.sideBar.location": "right",
+    "claudeCode.preferredLocation": "panel",
+    "workbench.colorTheme": "GitHub Dark",
+    "window.menuBarVisibility": "compact",
+    "workbench.statusBar.visible": false,
     "editor.cursorBlinking": "smooth",
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.padding.top": 25,
-    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "explorer.confirmDelete": false,
+    "git.enableSmartCommit": true,
+    "workbench.iconTheme": "jetbrains-file-icon-theme-dark",
     "workbench.productIconTheme": "material-product-icons"
 }
