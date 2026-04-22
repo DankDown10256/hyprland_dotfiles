@@ -22,13 +22,12 @@ window {
     anchor:              center;
     fullscreen:          false;
     
-    /* Largeur de la fenêtre */
-    width:               1000px; 
-    height:              360px;
+    /* Fenêtre plus large et plus haute pour de grosses images */
+    width:               1200px; 
+    height:              520px;
     
     background-color:    @bg;
-    border:              1px;
-    border-radius:       16px;
+    border:              2px;
     border-color:        @border-color;
     cursor:              "default";
 }
@@ -36,8 +35,8 @@ window {
 /*****----- Main Box -----*****/
 mainbox {
     orientation:         vertical;
-    spacing:             15px;
-    padding:             20px;
+    spacing:             20px;
+    padding:             30px;
     background-color:    transparent;
     children:            [ "inputbar", "listview" ];
 }
@@ -46,10 +45,8 @@ mainbox {
 inputbar {
     enabled:             true;
     spacing:             10px;
-    padding:             5px 10px;
-    border:              0px 0px 1px 0px; 
-    border-color:        #3a3a3c;
-    background-color:    transparent;
+    padding:             10px 15px;
+    background-color:    @background-alt; /* Un peu plus sombre que le fond */
     text-color:          @fg;
     children:            [ "prompt", "entry" ];
 }
@@ -57,6 +54,7 @@ inputbar {
 prompt {
     enabled:             true;
     text-color:          @fg-dim;
+    font:                "JetBrains Mono Bold 12";
 }
 
 entry {
@@ -66,71 +64,63 @@ entry {
     text-color:          @fg;
 }
 
-/*****----- Le Vrai Carrousel Horizontal -----*****/
+/*****----- Le Carrousel Horizontal -----*****/
 listview {
     enabled:             true;
     cycle:               true;
     dynamic:             true;
     scrollbar:           false;
-    
-    /* LE FIX EST ICI : on enlève columns et lines pour laisser Rofi gérer le flux horizontal libre */
     layout:              horizontal; 
     
-    spacing:             15px;
+    spacing:             25px;
     background-color:    transparent;
 }
 
-/*****----- Les Éléments (Aperçus du carrousel) -----*****/
+/*****----- Les Éléments (Vignettes larges) -----*****/
 element {
     enabled:             true;
-    orientation:         vertical; /* L'image au dessus, le texte en dessous */
-    spacing:             8px;
-    padding:             15px;
-    border-radius:       12px;
+    orientation:         vertical;
+    spacing:             12px;
+    padding:             20px;
     background-color:    transparent;
     
-    /* On donne une largeur fixe aux vignettes pour forcer le défilement un par un */
-    width:               220px; 
+    /* Largeur fixe pour des aperçus imposants */
+    width:               320px; 
 }
 
-/* Force le fond transparent sur les éléments non sélectionnés */
+/* Éléments non sélectionnés */
 element normal.normal,
-element alternate.normal,
-element normal.active,
-element alternate.active {
+element alternate.normal {
     background-color:    transparent;
     text-color:          @fg;
 }
 
-/* L'élément actuellement sélectionné */
-element selected.normal,
-element selected.active {
+/* L'élément sélectionné avec effet de focus */
+element selected.normal {
     background-color:    @bg-sel;
-    border:              1px;
+    border:              2px;
     border-color:        @fg-dim;
 }
 
-/* Vignette d'image */
+/* Taille de l'image (Vraiment plus grande) */
 element-icon {
     background-color:    transparent;
-    text-color:          inherit;
-    size:                140px; /* Taille de l'aperçu */
+    size:                240px; /* On passe de 140px à 240px */
     cursor:              inherit;
     horizontal-align:    0.5;
 }
 
-/* Texte en dessous */
+/* Texte sous l'image */
 element-text {
     background-color:    transparent;
     text-color:          inherit;
     horizontal-align:    0.5;
     vertical-align:      0.5;
     cursor:              inherit;
-    font:                "JetBrains Mono 10";
+    font:                "JetBrains Mono 11";
 }
 
-element selected.normal element-text,
-element selected.active element-text {
-    font:                "JetBrains Mono Bold 10";
+element selected.normal element-text {
+    font:                "JetBrains Mono Bold 12";
     text-color:          @fg-dim;
 }

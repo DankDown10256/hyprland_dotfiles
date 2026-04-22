@@ -1,82 +1,95 @@
-configuration {
-    modi:                   "drun";
-    font:                   "Rubik 10";
-    display-drun:           "";
-    sidebar-mode:           false;
-}
-
-/* On importe le fichier généré par Matugen */
-@theme "~/.config/rofi/colors.rasi"
+/* ROFI TWO LINES THEME */
+@import "colors.rasi"
 
 * {
-    /* Liaison des couleurs Matugen aux variables de ce thème */
-    bg:                     @background;
-    fg:                     @foreground;
-    button:                 @background-alt;
-
-    background-color:       @bg;
-    text-color:             @fg;
+    font:             "Fira Code 10";
+    background-color: transparent;
+    text-color:       @foreground;
+    
+    margin:           0px;
+    padding:          0px;
+    spacing:          0px;
 }
 
 window {
-    transparency:           "real";
-    border-radius:          7px;
-    width:                  40%;
-    y-offset:               10px;
-    padding:                20px;
-    location:               south;
-}
-
-prompt { enabled: false; }
-
-entry {
-    placeholder:            "Search";
-    expand:                 true;
-    padding:                5px 2% 5px 2%;
-    background-color:       @button;
-    placeholder-color:      @fg;
+    background-color: @background;
+    location:         north;
+    width:            100%;
+    border:           0px 0px 1px 0px;
+    border-color:     @border-color;
 }
 
 inputbar {
-    children:               [ prompt, entry ];
-    background-color:       @button;
-    text-color:             @fg;
-    expand:                 false;
-    border-radius:          6px;
-    padding:                8px;
+    padding:          2px 8px;
+    spacing:          8px;
+    background-color: @background-alt;
+    children:         [ prompt, entry ];
+}
+
+prompt, entry, element-text, element-icon {
+    vertical-align:   0.5;
+}
+
+prompt {
+    text-color:       @selected;
 }
 
 listview {
-    columns:                1;
-    lines:                  8;
-    cycle:                  false;
-    dynamic:                true;
-    layout:                 vertical;
-}
-
-mainbox {
-    children:               [ inputbar, listview ];
-    spacing:                2%;
-    padding:                2% 1% 2% 1%;
+    lines:            1;
+    columns:          4;
+    background-color: @background; /* Force le fond du conteneur */
 }
 
 element {
-    orientation:            vertical;
-    border-radius:          0%;
-    padding:                1.5% 0% 1.5% 0%;
+    padding:          1px 8px;
+    spacing:          4px;
+}
+
+/* Éléments non sélectionnés (Normal) */
+element normal normal {
+    background-color: @background;
+    text-color:       @foreground;
+}
+
+/* Éléments alternés (pour éviter le blanc sur blanc une ligne sur deux) */
+element alternate normal {
+    background-color: @background;
+    text-color:       @foreground;
+}
+
+element normal urgent {
+    text-color:       @urgent;
+}
+
+element normal active {
+    text-color:       @active;
+}
+
+element alternate active {
+    text-color:       @active;
+}
+
+/* Éléments sélectionnés */
+element selected {
+    text-color:       @background; /* Texte sombre sur fond bleu clair */
+}
+
+element selected normal {
+    background-color: @selected;
+}
+
+element selected urgent {
+    background-color: @urgent;
+}
+
+element selected active {
+    background-color: @active;
+}
+
+element-icon {
+    size:             0.75em;
 }
 
 element-text {
-    expand:                 true;
-    vertical-align:         0.5;
-    margin:                 0.5% 3% 0% 3%;
-    background-color:       inherit;
-    text-color:             inherit;
-}
-
-element selected {
-    /* On utilise la couleur 'selected' de Matugen pour l'élément actif */
-    background-color:       @selected;
-    text-color:             @background; /* Fond souvent sombre, donc texte clair (ou inversement) */
-    border-radius:          6px;
+    text-color:       inherit;
 }
