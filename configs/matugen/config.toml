@@ -74,3 +74,7 @@ output_path = "~/.config/vesktop/themes/matugen.theme.css"
 input_path = '~/.config/matugen/templates/spicetify.ini'
 output_path = '~/.config/spicetify/Themes/matugen/color.ini'
 
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/colors-hyprland.conf'
+output_path = '~/.config/hypr/colors-hyprland.conf'
+post_hook = 'hyprctl reload'
