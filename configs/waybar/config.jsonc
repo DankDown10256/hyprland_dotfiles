@@ -1,8 +1,8 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 28, // Hauteur réduite pour gagner de la place
-    "spacing": 4,
+    "layer": "bottom",
+    "position": "bottom",
+    "height": 30, // Hauteur réduite pour gagner de la place
+    "spacing": 6,
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
     "modules-right": ["cpu", "memory", "backlight", "pulseaudio", "battery", "tray"],
