@@ -1,65 +1,56 @@
 @import "colors.css";
 
 * {
-    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font", "DejaVu Sans Mono", monospace;
     font-size: 13px;
     border: none;
-    border-radius: 0;
+    border-radius: 0; /* On oublie les arrondis pour le look i3 */
+    margin: 0;
+    padding: 0;
 }
 
 window#waybar {
     background-color: @base;
     border-bottom: 2px solid @surface2;
-    color: @text;
-    transition-property: background-color;
-    transition-duration: .5s;
+    color: @green; /* Couleur globale style terminal */
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 10px;
     background-color: transparent;
     color: @text;
-    border-bottom: 2px solid transparent;
 }
 
 #workspaces button.active {
-    color: @teal;
-    border-bottom: 2px solid @teal;
+    background-color: @surface2; /* Fond pour le bureau actif comme i3 */
+    color: @green;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: @red;
+    color: @base;
 }
 
-/* Style commun pour les modules de droite */
-#cpu, #memory, #backlight, #pulseaudio, #battery, #clock, #tray {
-    padding: 0 10px;
-    background-color: @surface1;
-    margin: 3px 0;
-}
-
-/* Coins arrondis légers pour le premier et dernier module du bloc droit */
-#cpu {
-    border-radius: 4px 0 0 4px;
-    color: @peach;
-}
-
-#memory { color: @yellow; }
-#backlight { color: @teal; }
-#pulseaudio { color: @blue; }
-#battery { 
-    color: @green; 
-    border-radius: 0 4px 4px 0;
-    margin-right: 5px;
+/* Modules de droite : On enlève les blocs séparés pour un style ligne continue */
+#cpu, #memory, #backlight, #pulseaudio, #battery, #clock, #tray, #network {
+    padding: 0 8px;
+    background-color: transparent;
+    color: @green; /* Tout en vert pour le style rétro */
+    border-left: 1px solid @surface2; /* Les petits traits de séparation i3 */
 }
 
 #clock {
-    background-color: transparent;
     font-weight: bold;
 }
 
 #window {
-    padding: 0 10px;
-    color: @blue;
-    font-style: italic;
+    padding: 0 15px;
+    color: @green;
+    font-style: normal;
+}
+
+/* On retire les marges et les couleurs spécifiques pour l'effet monolithique */
+#cpu, #battery {
+    border-radius: 0;
+    margin: 0;
 }
