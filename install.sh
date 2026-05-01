@@ -31,21 +31,18 @@ success() { echo -e "${GREEN}[OK]${RESET}    $*"; }
 warn()    { echo -e "${YELLOW}[WARN]${RESET}  $*"; }
 error()   { echo -e "${RED}[ERROR]${RESET} $*" >&2; }
 
-backup_and_link() {
-    local src="$1"   # absolute path to source (in repo)
-    local dest="$2"  # absolute path to destination (in $HOME)
+backup_and_copy() {
+    local src="$1"   # absolute path to source dir (in repo)
+    local dest="$2"  # absolute path to destination dir (in $HOME)
     local label="$3" # display name
 
-    # Backup existing target if it exists and is not already our symlink
-    if [ -e "$dest" ] || [ -L "$dest" ]; then
-        if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
-            success "$label already linked — skipping"
-            return
-        fi
+    # If dest is a symlink (old install), remove it so we can replace with a real dir
+    if [ -L "$dest" ]; then
+        rm "$dest"
+    elif [ -e "$dest" ]; then
         local bname
         bname="$(basename "$dest")"
         local backup_path="$BACKUP_DIR/$bname"
-        # Avoid collisions (e.g. same basename under different parents)
         local counter=1
         while [ -e "$backup_path" ]; do
             backup_path="${BACKUP_DIR}/${bname}_${counter}"
@@ -53,12 +50,12 @@ backup_and_link() {
         done
         cp -r "$dest" "$backup_path"
         echo "backup:$dest:$backup_path" >> "$MANIFEST"
-        rm -rf "$dest"
         warn "$label backed up to $backup_path"
     fi
 
-    ln -sf "$src" "$dest"
-    echo "link:$dest:$src" >> "$MANIFEST"
+    mkdir -p "$dest"
+    cp -r "$src/." "$dest/"
+    echo "copy:$dest:$src" >> "$MANIFEST"
     success "$label → $dest"
 }
 
@@ -87,7 +84,7 @@ for src_dir in "$CONFIGS_SRC"/*/; do
     [ -d "$src_dir" ] || continue
     app="$(basename "$src_dir")"
     dest="$HOME/.config/$app"
-    backup_and_link "$src_dir" "$dest" "$app"
+    backup_and_copy "$src_dir" "$dest" "$app"
 done
 
 echo ""
@@ -104,7 +101,7 @@ for name in "${!HOME_DIRS[@]}"; do
     src="$HOME_SRC/$name"
     dest="${HOME_DIRS[$name]}"
     if [ -d "$src" ]; then
-        backup_and_link "$src" "$dest" "$name"
+        backup_and_copy "$src" "$dest" "$name"
     else
         warn "home/$name not found — skipping"
     fi
