@@ -1,4 +1,4 @@
-# 🌌 Arch Hyprland • Dev Environment
+# 🌌 Hyprland • Dev Environment
 
 <div align="center">
 
