@@ -1,71 +1,74 @@
 {
-    "layer": "bottom",
-    "position": "bottom",
-    "height": 24,
-    "spacing": 0, // i3 n'a pas d'espace entre les modules
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "margin-top": 0,
+  "margin-right": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "fixed-center": true,
+  "spacing": 0,
 
-    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "clock", "tray"],
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["group/status"],
 
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}",
-        "on-click": "activate"
+  "hyprland/workspaces": {
+    "active-only": true,
+    "all-outputs": false,
+    "format": "Activities  {name}",
+    "on-click": "activate",
+    "disable-scroll": true
+  },
+
+  "clock": {
+    "format": "{:%a  %H:%M}",
+    "tooltip-format": "{:%A %d %B %Y\n%H:%M:%S}",
+    "interval": 1
+  },
+
+  "group/status": {
+    "orientation": "horizontal",
+    "modules": ["network", "pulseaudio", "memory", "battery"]
+  },
+
+  "network": {
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰈀",
+    "format-linked": "󰈀",
+    "format-disconnected": "󰤭",
+    "tooltip-format-wifi": "{essid}  {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-disconnected": "Network disconnected"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
+    "tooltip-format": "Volume  {volume}%",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "scroll-step": 5
+  },
 
-    "hyprland/window": {
-        "format": "{title}",
-        "max-length": 50,
-        "separate-outputs": true
+  "memory": {
+    "format": "󰍛  {used:0.1f}G",
+    "tooltip-format": "Memory  {used:0.1f} GiB / {total:0.1f} GiB",
+    "interval": 5
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
-
-    "hyprland/submap": {
-        "format": "MODE: {}"
-    },
-
-    "cpu": {
-        "format": "CPU: {usage}%",
-        "interval": 5
-    },
-
-    "memory": {
-        "format": "RAM: {used:0.1f}G",
-        "interval": 5
-    },
-
-    "network": {
-        "format-wifi": "WLAN: {essid}",
-        "format-ethernet": "ETH: {ifname}",
-        "format-disconnected": "NO NET",
-        "tooltip-format": "{ifname} via {gwaddr}"
-    },
-
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "BAT: {capacity}%",
-        "format-charging": "CHR: {capacity}%",
-        "format-plugged": "AC: {capacity}%"
-    },
-
-    "pulseaudio": {
-        "format": "VOL: {volume}%",
-        "format-muted": "MUTE",
-        "on-click": "pavucontrol"
-    },
-
-    "clock": {
-        "format": "{:%Y-%m-%d %H:%M:%S}",
-        "interval": 1,
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-
-    "tray": {
-        "icon-size": 14,
-        "spacing": 10
-    }
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-plugged": "󰚥",
+    "format-full": "󰁹",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "Battery  {capacity}%  {time}"
+  }
 }

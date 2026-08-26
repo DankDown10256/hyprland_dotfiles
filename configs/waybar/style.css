@@ -1,56 +1,72 @@
-@import "colors.css";
-
 * {
-    font-family: "JetBrainsMono Nerd Font", "DejaVu Sans Mono", monospace;
-    font-size: 13px;
-    border: none;
-    border-radius: 0; /* On oublie les arrondis pour le look i3 */
-    margin: 0;
-    padding: 0;
+  min-height: 0;
+  border: none;
+  border-radius: 0;
+  font-family: "Cantarell", "Noto Sans", sans-serif;
+  font-size: 14px;
+  box-shadow: none;
+  text-shadow: none;
 }
 
 window#waybar {
-    background-color: @base;
-    border-bottom: 2px solid @surface2;
-    color: @green; /* Couleur globale style terminal */
+  background: rgba(24, 24, 24, 0.94);
+  color: #f2f2f2;
+}
+
+#workspaces,
+#clock,
+#status {
+  margin: 3px 10px;
+  border-radius: 9px;
+  background: transparent;
+  transition: background-color 180ms ease-out;
+}
+
+#workspaces:hover,
+#clock:hover,
+#status:hover {
+  background: rgba(255, 255, 255, 0.10);
 }
 
 #workspaces button {
-    padding: 0 10px;
-    background-color: transparent;
-    color: @text;
+  min-width: 0;
+  padding: 0 10px;
+  border-radius: 9px;
+  color: #f2f2f2;
+  background: transparent;
+  font-weight: 600;
+  transition: background-color 180ms ease-out;
 }
 
+#workspaces button:hover,
 #workspaces button.active {
-    background-color: @surface2; /* Fond pour le bureau actif comme i3 */
-    color: @green;
-}
-
-#workspaces button.urgent {
-    background-color: @red;
-    color: @base;
-}
-
-/* Modules de droite : On enlève les blocs séparés pour un style ligne continue */
-#cpu, #memory, #backlight, #pulseaudio, #battery, #clock, #tray, #network {
-    padding: 0 8px;
-    background-color: transparent;
-    color: @green; /* Tout en vert pour le style rétro */
-    border-left: 1px solid @surface2; /* Les petits traits de séparation i3 */
+  background: rgba(255, 255, 255, 0.08);
 }
 
 #clock {
-    font-weight: bold;
+  padding: 0 12px;
+  font-weight: 600;
 }
 
-#window {
-    padding: 0 15px;
-    color: @green;
-    font-style: normal;
+#network,
+#pulseaudio,
+#memory,
+#battery {
+  min-width: 14px;
+  padding: 0 5px;
+  background: transparent;
+  color: #f2f2f2;
 }
 
-/* On retire les marges et les couleurs spécifiques pour l'effet monolithique */
-#cpu, #battery {
-    border-radius: 0;
-    margin: 0;
+#network {
+  padding-left: 11px;
+}
+
+#battery {
+  padding-right: 11px;
+}
+
+#battery.warning,
+#battery.critical {
+  color: #f2f2f2;
 }
