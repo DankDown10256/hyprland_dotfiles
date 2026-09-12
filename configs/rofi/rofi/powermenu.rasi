@@ -1,0 +1,2 @@
+/* Compatibilité avec les anciens appels externes. */
+@import "themes/powermenu.rasi"

@@ -1,0 +1,2 @@
+/* Configuration par défaut : lanceur d'applications. */
+@import "themes/launcher.rasi"
