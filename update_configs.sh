@@ -8,6 +8,8 @@ rofi=/home/$USER/.config/rofi/
 hypr=/home/$USER/.config/hypr/
 swaync=/home/$USER/.config/swaync/
 waybar=/home/$USER/.config/waybar/
+foot=/home/$USER/.config/foot/
+fish=/home/$USER/.config/fish
 
 echo "Update configurations"
 
@@ -22,5 +24,11 @@ INFO "swaync copied"
 
 cp -r "$waybar" ./configs/waybar/
 INFO "Waybar copied"
+
+cp -r "$foot" ./configs/foot/
+INFO "Foot copied"
+
+cp -r "$fish" ./configs/fish/
+INFO "Fish copied"
 
 echo "Update finished"
